@@ -3,10 +3,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <%@include file="../includes/header.jsp"%>
+        <title>Admin</title>
     </head>
+
+    <c:if test="${sessionScope.isAdminLoggedIn == null}">
+        <c:redirect url="admin-login.jsp" />
+    </c:if>
+
     <body>
         <h1>Admin Dashboard</h1>
+    <%@include file="../includes/footer.jsp"%>
     </body>
+    
 </html>

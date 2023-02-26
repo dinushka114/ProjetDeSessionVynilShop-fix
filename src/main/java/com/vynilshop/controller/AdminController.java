@@ -4,6 +4,7 @@
  */
 package com.vynilshop.controller;
 
+import com.vynilshop.service.AdminService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -11,16 +12,45 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 public class AdminController extends HttpServlet {
-    
-    
-    protected void adminLogin(HttpServletRequest request, HttpServletResponse response){
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+
+    private AdminService adminService;
+    private HttpSession session;
+
+    public AdminController() {
+        adminService = new AdminService();
+    }
+
+    protected void adminLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        //get request parameters with stripping white spaces
+        String username = request.getParameter("username").strip();
+        String password = request.getParameter("password").strip();
         
-        
+        session = request.getSession();
+
+        //validations
+        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
+            request.setAttribute("emptyData", "Please fill all the required details");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin-login.jsp");
+            requestDispatcher.forward(request, response);
+        } else {
+            boolean result = adminService.login(username, password);
+            System.out.println(result);
+            if (result == true) {
+                session.setAttribute("isAdminLoggedIn", true);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/admin-dashboard.jsp");
+                requestDispatcher.forward(request, response);
+            } else {
+                request.setAttribute("loginError", "Invalid Credentials");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin-login.jsp");
+                requestDispatcher.forward(request, response);
+            }
+
+        }
+
     }
 
     /**
@@ -36,10 +66,10 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
-        if(action.equals("Login")){
+        if (action.equals("Login")) {
             this.adminLogin(request, response);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
