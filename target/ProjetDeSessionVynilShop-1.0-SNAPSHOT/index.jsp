@@ -9,12 +9,10 @@
         <title>Vynil Shop</title>
     </head>
     <body>
-
+        <%@include file="includes/user-nav.jsp"%>
         <div class="container">
             
-            <form action="TestServlet" method="POST">
-                <input type="submit" value="GO" />
-            </form>
+            
 
             
             <div class="card-header my-3" id="card-header">Tous les Produits</div>
