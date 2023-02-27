@@ -6,16 +6,53 @@ package com.vynilshop.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author dinushkapiyumal
- */
-public class ProductController extends HttpServlet {
+import java.util.regex.*;
+
+public class CustomerController extends HttpServlet {
+
+    protected void registerCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String cpassword = request.getParameter("cpassword");
+
+        int errorCount = 0;
+
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+
+        Matcher matcher = pattern.matcher(email);
+
+        if (name == null || name.isEmpty() || email == null || email.isEmpty() || password == null || password.isEmpty() || cpassword == null || cpassword.isEmpty()) {
+            request.setAttribute("emptyData", "Please fill all the required details");
+            errorCount += 1;
+
+        }
+
+        if (matcher.matches() == false) {
+            request.setAttribute("emailError", "Your email is invalid");
+            errorCount += 1;
+        }
+
+        if (!password.equals(cpassword)) {
+            request.setAttribute("passwordError", "Password and confirm password are not same");
+            errorCount += 1;
+        }
+
+        if (errorCount > 0) {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer-register.jsp");
+            requestDispatcher.forward(request, response);
+        }else{
+            System.out.println("Hari");
+        }
+
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,17 +66,9 @@ public class ProductController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ProductController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ProductController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String action = request.getParameter("action");
+        if (action.equals("Register")) {
+            this.registerCustomer(request, response);
         }
     }
 

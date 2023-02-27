@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>ProductController</servlet-name>
-        <servlet-class>com.vynilshop.controller.ProductController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AdminController</servlet-name>
         <servlet-class>com.vynilshop.controller.AdminController</servlet-class>
     </servlet>
@@ -12,10 +8,10 @@
         <servlet-name>NavigationController</servlet-name>
         <servlet-class>com.vynilshop.controller.NavigationController</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>ProductController</servlet-name>
-        <url-pattern>/ProductController</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>CustomerController</servlet-name>
+        <servlet-class>com.vynilshop.controller.CustomerController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdminController</servlet-name>
         <url-pattern>/AdminController</url-pattern>
@@ -23,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>NavigationController</servlet-name>
         <url-pattern>/NavigationController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerController</servlet-name>
+        <url-pattern>/CustomerController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
