@@ -4,6 +4,8 @@
  */
 package com.vynilshop.controller;
 
+import com.vynilshop.model.User;
+import com.vynilshop.service.CustomerService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -15,6 +17,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.regex.*;
 
 public class CustomerController extends HttpServlet {
+
+    private CustomerService customerService;
+
+    public CustomerController() {
+        customerService = new CustomerService();
+    }
 
     protected void registerCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
@@ -48,8 +56,18 @@ public class CustomerController extends HttpServlet {
         if (errorCount > 0) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer-register.jsp");
             requestDispatcher.forward(request, response);
-        }else{
-            System.out.println("Hari");
+        } else {
+            User user = new User(name, email, password);
+            boolean res = customerService.registerCustomer(user);
+            if (res) {
+                request.setAttribute("registerDone", "Registered successful");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer-register.jsp");
+                requestDispatcher.forward(request, response);
+            }else{
+                request.setAttribute("registerFail", "Something went wrong");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer-register.jsp");
+                requestDispatcher.forward(request, response);
+            }
         }
 
     }

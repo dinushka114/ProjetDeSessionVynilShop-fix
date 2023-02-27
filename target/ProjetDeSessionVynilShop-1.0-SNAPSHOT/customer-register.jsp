@@ -37,6 +37,20 @@
 
                     </div>
                 </c:if>
+                
+                <c:if test="${registerDone != null}">
+                    <div class="alert alert-success mt-2 alert-dismissible" role="alert">
+                        <c:out value='${registerDone}' />
+
+                    </div>
+                </c:if>
+                
+                <c:if test="${registerFail != null}">
+                    <div class="alert alert-danger mt-2 alert-dismissible" role="alert">
+                        <c:out value='${registerFail}' />
+
+                    </div>
+                </c:if>
 
 
 
@@ -67,8 +81,10 @@
                     </div>
 
                     <div class='mb-3'>
-                        <input type='submit' class='btn btn-primary w-100' name='action'
+                        <input type='submit' class='btn btn-primary w-100 mb-3' name='action'
                                value='Register'>
+                        <a href="customer-login.jsp">click here to login</a>
+                       
                     </div>
                 </form>
 
