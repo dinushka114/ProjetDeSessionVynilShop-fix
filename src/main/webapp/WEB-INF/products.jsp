@@ -45,6 +45,12 @@
                             </div>
                         </c:if>
                         
+                        <c:if test="${productUpdated != null}">
+                            <div class="alert alert-success mt-2 alert-dismissible" role="alert">
+                                <c:out value='${productUpdated}' />
+                            </div>
+                        </c:if>
+                        
                         <c:if test="${productDelete != null}">
                             <div class="alert alert-success mt-2 alert-dismissible" role="alert">
                                 <c:out value='${productDelete}' />

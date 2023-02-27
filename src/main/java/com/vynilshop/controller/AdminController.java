@@ -55,6 +55,35 @@ public class AdminController extends HttpServlet {
 
     }
 
+    protected void updateProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String artist = request.getParameter("artist");
+        Double price = Double.valueOf(request.getParameter("price"));
+        String genre = request.getParameter("genre");
+        String description = request.getParameter("genre");
+        int year = Integer.parseInt(request.getParameter("year"));
+
+        if (name == null || name.isEmpty() || artist == null || artist.isEmpty() || genre == null || genre.isEmpty() || description == null || description.isEmpty()) {
+            request.setAttribute("emptyData", "Please fill all the required details");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
+            requestDispatcher.forward(request, response);
+        } else {
+            Product product = new Product(id , name, artist, price, genre, description, year);
+            boolean result = adminService.updateProduct(product);
+            if (result == true) {
+                request.setAttribute("productUpdated", "Product Updated successful");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/products.jsp");
+                requestDispatcher.forward(request, response);
+            } else {
+                request.setAttribute("productUpdatedError", "Something went wrong");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
+                requestDispatcher.forward(request, response);
+            }
+        }
+
+    }
+
     protected void addNewProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String artist = request.getParameter("artist");
@@ -165,6 +194,8 @@ public class AdminController extends HttpServlet {
             this.addNewProduct(request, response);
         } else if (action.equals("Delete Product")) {
             this.deleteProduct(request, response);
+        } else if (action.equals("Update Product")) {
+            this.updateProduct(request, response);
         }
 
     }

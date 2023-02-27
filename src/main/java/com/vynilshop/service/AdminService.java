@@ -90,6 +90,39 @@ public class AdminService {
         return res;
     }
 
+    public boolean updateProduct(Product product) {
+        boolean result = false;
+        try {
+
+            connection = DBConnection.getDBConnection();
+            preparedStatement = connection.prepareStatement("UPDATE products set name = ? , artist = ? , price = ? , genre = ? , description = ? , year = ? where id = ?");
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setString(2, product.getArtist());
+            preparedStatement.setDouble(3, product.getPrice());
+            preparedStatement.setString(4, product.getGenre());
+            preparedStatement.setString(5, product.getDescription());
+            preparedStatement.setInt(6, product.getYear());
+            preparedStatement.setInt(7, product.getId());
+            result = preparedStatement.executeUpdate() > 0;
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return result;
+    }
+
     public boolean deleteProduct(int id) {
         boolean result = false;
         try {
