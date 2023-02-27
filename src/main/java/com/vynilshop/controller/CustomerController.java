@@ -15,13 +15,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.util.regex.*;
+import javax.servlet.http.HttpSession;
 
 public class CustomerController extends HttpServlet {
 
     private CustomerService customerService;
+    private HttpSession session;
 
     public CustomerController() {
         customerService = new CustomerService();
+    }
+
+    protected void loginCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        
+        session = request.getSession();
+
+        boolean result = customerService.loginCustomer(email, password);
+        if (result == true) {
+            session.setAttribute("userId", email);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+            requestDispatcher.forward(request, response);
+        } else {
+            request.setAttribute("loginError", "Invalid Credentials");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer-login.jsp");
+            requestDispatcher.forward(request, response);
+        }
     }
 
     protected void registerCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -63,7 +83,7 @@ public class CustomerController extends HttpServlet {
                 request.setAttribute("registerDone", "Registered successful");
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer-register.jsp");
                 requestDispatcher.forward(request, response);
-            }else{
+            } else {
                 request.setAttribute("registerFail", "Something went wrong");
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer-register.jsp");
                 requestDispatcher.forward(request, response);
@@ -87,6 +107,8 @@ public class CustomerController extends HttpServlet {
         String action = request.getParameter("action");
         if (action.equals("Register")) {
             this.registerCustomer(request, response);
+        } else if (action.equals("Login")) {
+            this.loginCustomer(request, response);
         }
     }
 
