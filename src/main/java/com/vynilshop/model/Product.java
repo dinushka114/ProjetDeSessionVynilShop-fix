@@ -18,13 +18,23 @@ public class Product {
     public Product() {
 	}
 
-	public Product(int id, String name, String artist, Double price, String image, String genre, String label, int year) {
+	public Product(int id, String name, String artist, Double price, String image, String genre, String description, int year) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.artist = artist;
 		this.price = price;
 		this.image = image;
+		this.genre = genre;
+		this.description = description;
+		this.year = year;
+	}
+        
+        public Product( String name, String artist, Double price, String genre, String description, int year) {
+		super();
+		this.name = name;
+		this.artist = artist;
+		this.price = price;
 		this.genre = genre;
 		this.description = description;
 		this.year = year;

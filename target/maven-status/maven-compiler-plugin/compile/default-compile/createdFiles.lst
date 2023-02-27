@@ -1,8 +1,1 @@
-com/vynilshop/controller/ProductController.class
-com/vynilshop/util/DBConnection.class
-com/vynilshop/controller/TestServlet.class
-com/vynilshop/util/Constants.class
 com/vynilshop/model/Product.class
-com/vynilshop/service/AdminService.class
-com/vynilshop/controller/AdminController.class
-.netbeans_automatic_build

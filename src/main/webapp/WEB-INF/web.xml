@@ -8,6 +8,10 @@
         <servlet-name>AdminController</servlet-name>
         <servlet-class>com.vynilshop.controller.AdminController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NavigationController</servlet-name>
+        <servlet-class>com.vynilshop.controller.NavigationController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductController</servlet-name>
         <url-pattern>/ProductController</url-pattern>
@@ -16,9 +20,17 @@
         <servlet-name>AdminController</servlet-name>
         <url-pattern>/AdminController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NavigationController</servlet-name>
+        <url-pattern>/NavigationController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <context-param>
+        <param-name>tempfile.dir</param-name>
+        <param-value>tmpfiles</param-value>
+    </context-param>
 </web-app>

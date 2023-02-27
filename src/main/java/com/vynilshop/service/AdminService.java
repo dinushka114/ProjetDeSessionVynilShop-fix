@@ -4,6 +4,7 @@
  */
 package com.vynilshop.service;
 
+import com.vynilshop.model.Product;
 import com.vynilshop.util.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,7 +25,6 @@ public class AdminService {
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement("select username , password from admin");
             resultSet = preparedStatement.executeQuery();
-
 
             while (resultSet.next()) {
                 usernamedb = resultSet.getString("username");
@@ -51,6 +51,68 @@ public class AdminService {
             }
         }
 
+        return result;
+    }
+
+    public boolean addProduct(Product product) {
+        boolean res = false;
+        try {
+
+            connection = DBConnection.getDBConnection();
+            connection.setAutoCommit(false);
+            preparedStatement = connection.prepareStatement("INSERT INTO products ( name, artist, price, image , genre, description, year ) values(? , ? , ? , ? , ? , ? , ?)");
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setString(2, product.getArtist());
+            preparedStatement.setDouble(3, product.getPrice());
+            preparedStatement.setString(4, "image");
+            preparedStatement.setString(5, product.getGenre());
+            preparedStatement.setString(6, product.getDescription());
+            preparedStatement.setInt(7, product.getYear());
+            preparedStatement.execute();
+            connection.commit();
+            res = true;
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return res;
+    }
+
+    public boolean deleteProduct(int id) {
+        boolean result = false;
+        try {
+
+            connection = DBConnection.getDBConnection();
+            preparedStatement = connection.prepareStatement("delete from products where id = ? ");
+            preparedStatement.setInt(1, id);
+            result = preparedStatement.executeUpdate() > 0;
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return result;
     }
 
