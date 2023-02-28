@@ -6,6 +6,7 @@
     <head>
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <title>Admin</title>
 
 
@@ -44,19 +45,19 @@
                                 <c:out value='${productAdded}' />
                             </div>
                         </c:if>
-                        
+
                         <c:if test="${productUpdated != null}">
                             <div class="alert alert-success mt-2 alert-dismissible" role="alert">
                                 <c:out value='${productUpdated}' />
                             </div>
                         </c:if>
-                        
+
                         <c:if test="${productDelete != null}">
                             <div class="alert alert-success mt-2 alert-dismissible" role="alert">
                                 <c:out value='${productDelete}' />
                             </div>
                         </c:if>
-                        
+
                         <c:if test="${productDeleteError != null}">
                             <div class="alert alert-danger mt-2 alert-dismissible" role="alert">
                                 <c:out value='${productDeleteError}' />
@@ -78,7 +79,7 @@
                                     <th>Delete</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="myTable">
 
                                 <c:forEach var="product" items="${products.rows}">
                                     <tr id='<c:out value="${product.id}" />'>
@@ -116,6 +117,16 @@
         </div>
 
         <script src="${pageContext.request.contextPath}/static/js/script.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
     </body>
 
 </html>

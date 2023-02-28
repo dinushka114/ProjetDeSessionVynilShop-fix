@@ -8,6 +8,7 @@ import com.vynilshop.model.User;
 import com.vynilshop.service.CustomerService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.regex.*;
 import javax.servlet.http.HttpSession;
+
+import com.vynilshop.model.Cart;
 
 public class CustomerController extends HttpServlet {
 
@@ -29,7 +32,7 @@ public class CustomerController extends HttpServlet {
     protected void loginCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
+
         session = request.getSession();
 
         boolean result = customerService.loginCustomer(email, password);
@@ -92,6 +95,40 @@ public class CustomerController extends HttpServlet {
 
     }
 
+    protected void addToCart(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        ArrayList<Cart> cartList = new ArrayList<>();
+        int id = Integer.parseInt(request.getParameter("id"));
+        Cart cm = new Cart();
+        cm.setId(id);
+        cm.setQuantity(1);
+        HttpSession session = request.getSession();
+        ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+        
+        for(Cart cart:cart_list){
+            System.out.println(cart.getId());
+        }
+        
+        if (cart_list == null) {
+            cartList.add(cm);
+            session.setAttribute("cart-list", cartList);
+            response.sendRedirect("index.jsp");
+        } else {
+            cartList = cart_list;
+
+            boolean exist = false;
+            for (Cart c : cart_list) {
+                if (c.getId() == id) {
+                    exist = true;
+                }
+            }
+
+            if (!exist) {
+                cartList.add(cm);
+                response.sendRedirect("index.jsp");
+            }
+        }
+    }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -109,6 +146,8 @@ public class CustomerController extends HttpServlet {
             this.registerCustomer(request, response);
         } else if (action.equals("Login")) {
             this.loginCustomer(request, response);
+        } else if (action.equals("Add to cart")) {
+            this.addToCart(request, response);
         }
     }
 

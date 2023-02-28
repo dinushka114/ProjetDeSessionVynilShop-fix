@@ -24,7 +24,7 @@
 
 
 
-            <div class="card-header my-3" id="card-header">Tous les Produits</div>
+            <div class="card-title my-3" id="card-header">Tous les Produits</div>
             <div class="row" id="max-wd">
 
                 <c:forEach var="product" items="${products.rows}">
@@ -40,7 +40,11 @@
                                 <h6 class="price">${product.price}</h6>
                                 <h6 class="category">${product.artist}</h6>
                                 <div class="mt-3 d-flex justify-content-between">
-                                    <a class="btn btn-outline-dark" href="add-to-cart?id=1">Ajouter</a>
+                                    <!--<a class="btn btn-outline-dark" href="add-to-cart?id=1">Ajouter</a>-->
+                                    <form action="CustomerController" method="POST">
+                                        <input  type='hidden' value="${product.id}"  name="id"/>
+                                        <input type='submit' class="btn btn-outline-dark" value='Add to cart' name="action" />
+                                    </form>
                                     <a class="btn btn-primary" href="order-now?quantity=1&id=1" id="btn-hover">Acheter</a>
                                 </div>
                                 <br>

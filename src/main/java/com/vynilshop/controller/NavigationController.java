@@ -40,6 +40,12 @@ public class NavigationController extends HttpServlet {
         }else if(action.equals("adminUpdateProduct")){
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
             requestDispatcher.forward(request, response);
+        } else if(action.equals("adminUsers")){
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/customers.jsp");
+            requestDispatcher.forward(request, response);
+        }else if(action.equals("adminDashboard")){
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/admin-dashboard.jsp");
+            requestDispatcher.forward(request, response);
         }
     }
 

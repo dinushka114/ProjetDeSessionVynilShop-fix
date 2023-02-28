@@ -165,6 +165,7 @@ public class AdminController extends HttpServlet {
             System.out.println(result);
             if (result == true) {
                 session.setAttribute("isAdminLoggedIn", true);
+                session.setAttribute("adminUser", username);
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/admin-dashboard.jsp");
                 requestDispatcher.forward(request, response);
             } else {
@@ -175,6 +176,20 @@ public class AdminController extends HttpServlet {
 
         }
 
+    }
+    
+    protected void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        int id = Integer.parseInt(request.getParameter("id"));
+        boolean result = adminService.deleteCustomer(id);
+        if (result == true) {
+            request.setAttribute("customerDelete", "Customer Deleted successful");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/customers.jsp");
+            requestDispatcher.forward(request, response);
+        } else {
+            request.setAttribute("customerDeleteError", "Something went wrong");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/customers.jsp");
+            requestDispatcher.forward(request, response);
+        }
     }
 
     /**
@@ -198,6 +213,8 @@ public class AdminController extends HttpServlet {
             this.deleteProduct(request, response);
         } else if (action.equals("Update Product")) {
             this.updateProduct(request, response);
+        } else if(action.equals("Delete Customer")){
+            this.deleteCustomer(request, response);
         }
 
     }

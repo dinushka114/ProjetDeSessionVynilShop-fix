@@ -16,8 +16,8 @@
                        url="jdbc:mysql://localhost:3306/monshopvynilvault" user="root"
                        password="123" />
 
-    <sql:query var="products" dataSource="${myData}">
-        SELECT * FROM products;
+    <sql:query var="users" dataSource="${myData}">
+        SELECT * FROM users;
     </sql:query>
 
     <c:if test="${sessionScope.isAdminLoggedIn == null}">
@@ -35,32 +35,18 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Products</h1>
-                        <ol class="breadcrumb mb-4">
-                            <a href="NavigationController?to=adminAddNewProduct" class="btn btn-outline-success">Add new</a>
-                        </ol>
-
-                        <c:if test="${productAdded != null}">
+                        <h1 class="mt-4">Customers</h1>
+                      
+                        
+                        <c:if test="${customerDelete != null}">
                             <div class="alert alert-success mt-2 alert-dismissible" role="alert">
-                                <c:out value='${productAdded}' />
+                                <c:out value='${customerDelete}' />
                             </div>
                         </c:if>
-
-                        <c:if test="${productUpdated != null}">
-                            <div class="alert alert-success mt-2 alert-dismissible" role="alert">
-                                <c:out value='${productUpdated}' />
-                            </div>
-                        </c:if>
-
-                        <c:if test="${productDelete != null}">
-                            <div class="alert alert-success mt-2 alert-dismissible" role="alert">
-                                <c:out value='${productDelete}' />
-                            </div>
-                        </c:if>
-
-                        <c:if test="${productDeleteError != null}">
+                        
+                        <c:if test="${customerDeleteError != null}">
                             <div class="alert alert-danger mt-2 alert-dismissible" role="alert">
-                                <c:out value='${productDeleteError}' />
+                                <c:out value='${customerDeleteError}' />
                             </div>
                         </c:if>
 
@@ -69,36 +55,26 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Artist</th>
-                                    <th>Price</th>
-                                    <th>Image</th>
-                                    <th>Genre</th>
-                                    <th>Description</th>
-                                    <th>Year</th>
-                                    <th>Update</th>
+                                    <th>Email</th>
+                                    <th>Password</th>
                                     <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
 
-                                <c:forEach var="product" items="${products.rows}">
-                                    <tr id='<c:out value="${product.id}" />'>
-                                        <td><c:out value="${product.id}" /></td>
-                                        <td><c:out value="${product.name}" /></td>
-                                        <td><c:out value="${product.artist}" /></td>
-                                        <td><c:out value="${product.price}" /></td>
-                                        <td>
-                                            <img class='img-fluid' width='150px' src="data:image/jpeg;base64,${product.image}" alt="alt"/>
-                                        </td>
-                                        <td><c:out value="${product.genre}" /></td>
-                                        <td><c:out value="${product.description}" /></td>
-                                        <td><c:out value="${product.year}" /></td>
-                                        <td> <a class="btn btn-warning" href="NavigationController?to=adminUpdateProduct&id=<c:out value='${product.id}'/>" >Update</a> </td>
+                                <c:forEach var="user" items="${users.rows}">
+                                    <tr id='<c:out value="${user.id}" />'>
+                                        <td><c:out value="${user.id}" /></td>
+                                        <td><c:out value="${user.name}" /></td>
+                                        <td><c:out value="${user.email}" /></td>
+                                        <td><c:out value="${user.password}" /></td>
+                                
+                                      
                                         <td> 
 
                                             <form action="AdminController" method="POST">
-                                                <input type="hidden" name="id" value='<c:out value='${product.id}'  />' />
-                                                <input type="submit" class="btn btn-danger" name="action" value="Delete Product" />
+                                                <input type="hidden" name="id" value='<c:out value='${user.id}'  />' />
+                                                <input type="submit" class="btn btn-danger" name="action" value="Delete Customer" />
                                             </form>
 
                                         </td>
@@ -117,7 +93,7 @@
         </div>
 
         <script src="${pageContext.request.contextPath}/static/js/script.js"></script>
-        <script>
+          <script>
             $(document).ready(function () {
                 $("#myInput").on("keyup", function () {
                     var value = $(this).val().toLowerCase();

@@ -161,5 +161,31 @@ public class AdminService {
         }
         return result;
     }
+    
+    public boolean deleteCustomer(int id) {
+        boolean result = false;
+        try {
+
+            connection = DBConnection.getDBConnection();
+            preparedStatement = connection.prepareStatement("delete from users where id = ? ");
+            preparedStatement.setInt(1, id);
+            result = preparedStatement.executeUpdate() > 0;
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
 
 }
