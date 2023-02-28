@@ -44,7 +44,7 @@
                                     <a class="btn btn-primary" href="order-now?quantity=1&id=1" id="btn-hover">Acheter</a>
                                 </div>
                                 <br>
-                                <a class="btn btn-link" href="detailProduit.jsp?id=1">Details</a>
+                                <a class="btn btn-link" href="product-details.jsp?id=${product.id}">Details</a>
                             </div>
                         </div>
                     </div>

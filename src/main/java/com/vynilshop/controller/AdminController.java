@@ -61,7 +61,7 @@ public class AdminController extends HttpServlet {
         String artist = request.getParameter("artist");
         Double price = Double.valueOf(request.getParameter("price"));
         String genre = request.getParameter("genre");
-        String description = request.getParameter("genre");
+        String description = request.getParameter("description");
         int year = Integer.parseInt(request.getParameter("year"));
 
         Part image = request.getPart("image");
@@ -102,7 +102,7 @@ public class AdminController extends HttpServlet {
         String artist = request.getParameter("artist");
         Double price = Double.valueOf(request.getParameter("price"));
         String genre = request.getParameter("genre");
-        String description = request.getParameter("genre");
+        String description = request.getParameter("description");
         int year = Integer.parseInt(request.getParameter("year").strip());
         Part image = request.getPart("image");
 
