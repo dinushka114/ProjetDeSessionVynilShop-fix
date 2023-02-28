@@ -154,7 +154,7 @@
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Year</label>
-                                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="year" value="<c:out value="${val.year}" /> ">
+                                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="year" value="<c:out value="${val.year}" />">
                                 </div>
 
                                 <input type="submit" class="btn btn-primary" name="action" value="Update Product" />
