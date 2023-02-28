@@ -40,11 +40,7 @@
                                 <h6 class="price">${product.price}</h6>
                                 <h6 class="category">${product.artist}</h6>
                                 <div class="mt-3 d-flex justify-content-between">
-                                    <!--<a class="btn btn-outline-dark" href="add-to-cart?id=1">Ajouter</a>-->
-                                    <form action="CustomerController" method="POST">
-                                        <input  type='hidden' value="${product.id}"  name="id"/>
-                                        <input type='submit' class="btn btn-outline-dark" value='Add to cart' name="action" />
-                                    </form>
+                                    <button class="btn btn-outline-dark" onclick="addToCart('${product.id}','${product.price}','${product.name}','${product.image}')" >Ajouter</button>
                                     <a class="btn btn-primary" href="order-now?quantity=1&id=1" id="btn-hover">Acheter</a>
                                 </div>
                                 <br>
@@ -67,5 +63,6 @@
 
 
     <%@include file="includes/footer.jsp"%>
+    <script src="${pageContext.request.contextPath}/static/js/script.js"></script>
 </body>
 </html>

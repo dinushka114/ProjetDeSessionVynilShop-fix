@@ -1,11 +1,3 @@
-/*!
-    * Start Bootstrap - SB Admin v7.0.5 (https://startbootstrap.com/template/sb-admin)
-    * Copyright 2013-2022 Start Bootstrap
-    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
-    */
-    // 
-// Scripts
-// 
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -24,3 +16,58 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+
+//cart
+
+let count = 0;
+let sum = 0;
+let cart = {};
+
+if (localStorage.getItem("count")) {
+    count = parseInt(localStorage.getItem("count"));
+}
+
+if (localStorage.getItem("sum")) {
+    sum = parseInt(localStorage.getItem("sum"));
+}
+
+if (localStorage.getItem("cart")) {
+    cart = JSON.parse(localStorage.getItem("cart"));
+}
+
+updateCart();
+
+function updateCart() {
+    document.getElementById("count").textContent = count;
+    document.getElementById("sum").textContent = sum;
+    localStorage.setItem("count", count);
+    localStorage.setItem("sum", sum);
+}
+
+function addToCart(itemId, itemPrice, itemName, itemImage) {
+    let price = Number(itemPrice);
+    let title = itemName;
+    let id = itemId;
+
+    if (id in cart) {
+        cart[id].qty++;
+    } else {
+        let cartItem = {
+            title: title,
+            price: price,
+            image: itemImage,
+            qty: 1
+        };
+        cart[id] = cartItem
+    }
+
+    count++;
+    sum += price;
+
+    console.log(cart);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCart();
+    alert("Item added to the cart")
+}

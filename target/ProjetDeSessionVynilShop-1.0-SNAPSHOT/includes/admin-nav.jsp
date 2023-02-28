@@ -10,5 +10,9 @@
             <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
         </div>
     </form>
-
+    
+    <form action="AdminController" method="POST">
+        <input  type="submit" name="action" value="Logout" class="btn btn-outline-danger m-2"/>
+    </form>
+    
 </nav>

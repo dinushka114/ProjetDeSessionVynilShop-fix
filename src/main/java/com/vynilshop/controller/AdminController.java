@@ -70,10 +70,8 @@ public class AdminController extends HttpServlet {
 
         if (image != null) {
             inputStream = image.getInputStream();
-         
+
         }
-        
-        
 
         if (name == null || name.isEmpty() || artist == null || artist.isEmpty() || genre == null || genre.isEmpty() || description == null || description.isEmpty()) {
             request.setAttribute("emptyData", "Please fill all the required details");
@@ -94,8 +92,6 @@ public class AdminController extends HttpServlet {
         }
 
     }
-    
-    
 
     protected void addNewProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
@@ -111,8 +107,7 @@ public class AdminController extends HttpServlet {
         if (image != null) {
             System.out.println(image.getName());
             inputStream = image.getInputStream();
-            
-            
+
         }
 
         if (name == null || name.isEmpty() || artist == null || artist.isEmpty() || genre == null || genre.isEmpty() || description == null || description.isEmpty()) {
@@ -178,7 +173,13 @@ public class AdminController extends HttpServlet {
 
     }
     
-    protected void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void adminLogout(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("admin-login.jsp");
+    }
+
+    protected void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         boolean result = adminService.deleteCustomer(id);
         if (result == true) {
@@ -207,13 +208,15 @@ public class AdminController extends HttpServlet {
         String action = request.getParameter("action");
         if (action.equals("Login")) {
             this.adminLogin(request, response);
+        } else if (action.equals("Logout")) {
+            this.adminLogout(request, response);
         } else if (action.equals("Add Product")) {
             this.addNewProduct(request, response);
         } else if (action.equals("Delete Product")) {
             this.deleteProduct(request, response);
         } else if (action.equals("Update Product")) {
             this.updateProduct(request, response);
-        } else if(action.equals("Delete Customer")){
+        } else if (action.equals("Delete Customer")) {
             this.deleteCustomer(request, response);
         }
 
