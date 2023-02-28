@@ -7,10 +7,10 @@ package com.vynilshop.controller;
 import com.vynilshop.model.Product;
 import com.vynilshop.service.AdminService;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Iterator;
-import java.util.List;
+import java.io.InputStream;
+import java.io.OutputStream;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -64,12 +64,23 @@ public class AdminController extends HttpServlet {
         String description = request.getParameter("genre");
         int year = Integer.parseInt(request.getParameter("year"));
 
+        Part image = request.getPart("image");
+
+        InputStream inputStream = null;
+
+        if (image != null) {
+            inputStream = image.getInputStream();
+         
+        }
+        
+        
+
         if (name == null || name.isEmpty() || artist == null || artist.isEmpty() || genre == null || genre.isEmpty() || description == null || description.isEmpty()) {
             request.setAttribute("emptyData", "Please fill all the required details");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
             requestDispatcher.forward(request, response);
         } else {
-            Product product = new Product(id , name, artist, price, genre, description, year);
+            Product product = new Product(id, name, artist, price, inputStream, genre, description, year);
             boolean result = adminService.updateProduct(product);
             if (result == true) {
                 request.setAttribute("productUpdated", "Product Updated successful");
@@ -83,6 +94,8 @@ public class AdminController extends HttpServlet {
         }
 
     }
+    
+    
 
     protected void addNewProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
@@ -90,35 +103,24 @@ public class AdminController extends HttpServlet {
         Double price = Double.valueOf(request.getParameter("price"));
         String genre = request.getParameter("genre");
         String description = request.getParameter("genre");
-        int year = Integer.parseInt(request.getParameter("year"));
+        int year = Integer.parseInt(request.getParameter("year").strip());
         Part image = request.getPart("image");
 
-//        String applicationPath = request.getServletContext().getRealPath("");
-//        String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
-//
-//        // creates the save directory if it does not exists
-//        File fileSaveDir = new File(uploadFilePath);
-//        if (!fileSaveDir.exists()) {
-//            fileSaveDir.mkdirs();
-//        }
-//        System.out.println("Upload File Directory=" + fileSaveDir.getAbsolutePath());
-//
-//        String fileName = null;
-//        //Get all the parts from request and write it to the file on server
-//        for (Part part : request.getParts()) {
-//            fileName = getFileName(part);
-//            part.write(uploadFilePath + File.separator + fileName);
-//        }
-//
-//        request.setAttribute("message", fileName + " File uploaded successfully!");
-//        getServletContext().getRequestDispatcher("/response.jsp").forward(
-//                request, response);
+        InputStream inputStream = null;
+
+        if (image != null) {
+            System.out.println(image.getName());
+            inputStream = image.getInputStream();
+            
+            
+        }
+
         if (name == null || name.isEmpty() || artist == null || artist.isEmpty() || genre == null || genre.isEmpty() || description == null || description.isEmpty()) {
             request.setAttribute("emptyData", "Please fill all the required details");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
             requestDispatcher.forward(request, response);
         } else {
-            Product product = new Product(name, artist, price, genre, description, year);
+            Product product = new Product(name, artist, price, inputStream, genre, description, year);
             boolean result = adminService.addProduct(product);
             if (result == true) {
                 request.setAttribute("productAdded", "Product Added successful");

@@ -12,7 +12,7 @@
     </head>
 
     <sql:setDataSource var="myData" driver="com.mysql.cj.jdbc.Driver"
-                       url="jdbc:mysql://localhost:3306/monshopvynilvault?zeroDateTimeBehavior=CONVERT_TO_NULL" user="root"
+                       url="jdbc:mysql://localhost:3306/monshopvynilvault" user="root"
                        password="123" />
 
     <sql:query var="products" dataSource="${myData}">
@@ -86,7 +86,9 @@
                                         <td><c:out value="${product.name}" /></td>
                                         <td><c:out value="${product.artist}" /></td>
                                         <td><c:out value="${product.price}" /></td>
-                                        <td><c:out value="${product.image}" /></td>
+                                        <td>
+                                            <img class='img-fluid' width='150px' src="data:image/jpeg;base64,${product.image}" alt="alt"/>
+                                        </td>
                                         <td><c:out value="${product.genre}" /></td>
                                         <td><c:out value="${product.description}" /></td>
                                         <td><c:out value="${product.year}" /></td>

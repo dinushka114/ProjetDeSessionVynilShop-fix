@@ -5,11 +5,17 @@
 package com.vynilshop.service;
 
 import com.vynilshop.model.Product;
+import static com.vynilshop.util.Constants.DEFAULT_BUFFER_SIZE;
 import com.vynilshop.util.DBConnection;
+import com.vynilshop.util.FileUtil;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Base64;
 
 public class AdminService {
 
@@ -54,17 +60,21 @@ public class AdminService {
         return result;
     }
 
-    public boolean addProduct(Product product) {
+    public boolean addProduct(Product product) throws IOException {
         boolean res = false;
         try {
 
             connection = DBConnection.getDBConnection();
             connection.setAutoCommit(false);
+
+            byte[] fileContent = FileUtil.getFileContent(product.getImage());
+            String imgData = Base64.getEncoder().encodeToString(fileContent);
+
             preparedStatement = connection.prepareStatement("INSERT INTO products ( name, artist, price, image , genre, description, year ) values(? , ? , ? , ? , ? , ? , ?)");
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getArtist());
             preparedStatement.setDouble(3, product.getPrice());
-            preparedStatement.setString(4, "image");
+            preparedStatement.setString(4, imgData);
             preparedStatement.setString(5, product.getGenre());
             preparedStatement.setString(6, product.getDescription());
             preparedStatement.setInt(7, product.getYear());
@@ -95,14 +105,17 @@ public class AdminService {
         try {
 
             connection = DBConnection.getDBConnection();
-            preparedStatement = connection.prepareStatement("UPDATE products set name = ? , artist = ? , price = ? , genre = ? , description = ? , year = ? where id = ?");
+            byte[] fileContent = FileUtil.getFileContent(product.getImage());
+            String imgData = Base64.getEncoder().encodeToString(fileContent);
+            preparedStatement = connection.prepareStatement("UPDATE products set name = ? , artist = ? , price = ? , image = ? , genre = ? , description = ? , year = ? where id = ?");
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getArtist());
             preparedStatement.setDouble(3, product.getPrice());
-            preparedStatement.setString(4, product.getGenre());
-            preparedStatement.setString(5, product.getDescription());
-            preparedStatement.setInt(6, product.getYear());
-            preparedStatement.setInt(7, product.getId());
+            preparedStatement.setString(4, imgData);
+            preparedStatement.setString(5, product.getGenre());
+            preparedStatement.setString(6, product.getDescription());
+            preparedStatement.setInt(7, product.getYear());
+            preparedStatement.setInt(8, product.getId());
             result = preparedStatement.executeUpdate() > 0;
 
         } catch (SQLException | ClassNotFoundException e) {

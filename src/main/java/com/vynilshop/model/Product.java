@@ -4,13 +4,15 @@
  */
 package com.vynilshop.model;
 
+import java.io.InputStream;
+
 public class Product {
 
     private int id;
     private String name;
     private String artist;
     private Double price;
-    private String image;
+    private InputStream image;
     private String genre;
     private String description;
     private int year;
@@ -18,7 +20,7 @@ public class Product {
     public Product() {
 	}
 
-	public Product(int id, String name, String artist, Double price, String image, String genre, String description, int year) {
+	public Product(int id, String name, String artist, Double price, InputStream image, String genre, String description, int year) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -29,13 +31,24 @@ public class Product {
 		this.description = description;
 		this.year = year;
 	}
-       
-         public Product( int id , String name, String artist, Double price, String genre, String description, int year) {
+        
+        public Product(int id, String name, String artist, Double price,  String genre, String description, int year) {
 		super();
-                this.id = id;
+		this.id = id;
 		this.name = name;
 		this.artist = artist;
 		this.price = price;
+		this.genre = genre;
+		this.description = description;
+		this.year = year;
+	}
+       
+         public Product(String name, String artist, Double price,InputStream image ,  String genre, String description, int year) {
+		super();
+		this.name = name;
+		this.artist = artist;
+		this.price = price;
+                this.image = image;
 		this.genre = genre;
 		this.description = description;
 		this.year = year;
@@ -84,11 +97,11 @@ public class Product {
 		this.price = price;
 	}
 
-	public String getImage() {
+	public InputStream getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(InputStream image) {
 		this.image = image;
 	}
 

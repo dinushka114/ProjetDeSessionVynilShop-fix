@@ -15,4 +15,6 @@ public class Constants {
     
     public static final String URL = "jdbc:mysql://localhost:3306/monshopvynilvault?zeroDateTimeBehavior=CONVERT_TO_NULL";
     
+    public static final int DEFAULT_BUFFER_SIZE = 8192;
+    
 }

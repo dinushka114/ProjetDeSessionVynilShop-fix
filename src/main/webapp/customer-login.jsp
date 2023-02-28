@@ -18,14 +18,14 @@
                 <c:if test="${emptyData != null}">
                     <div class="alert alert-danger mt-2 alert-dismissible" role="alert">
                         <c:out value='${emptyData}' />
-               
+
                     </div>
                 </c:if>
 
                 <c:if test="${loginError != null}">
                     <div class="alert alert-danger mt-2 alert-dismissible" role="alert">
                         <c:out value='${loginError}' />
-                     
+
                     </div>
                 </c:if>
 
@@ -46,9 +46,9 @@
                     <div class='mb-3'>
                         <input type='submit' class='btn btn-primary w-100 mb-3' name='action'
                                value='Login'>
-                        
+
                         <a href="customer-register.jsp">don't have an account?</a>
-                        
+
                     </div>
                 </form>
 
