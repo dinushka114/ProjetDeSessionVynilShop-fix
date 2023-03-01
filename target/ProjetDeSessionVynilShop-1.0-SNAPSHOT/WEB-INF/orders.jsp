@@ -16,7 +16,7 @@
                        password="123" />
 
     <sql:query var="orders" dataSource="${myData}">
-        select o.id , o.order_id , p.name , p.price, o.quantity , u.email , o.date ,po.status  from orders o , products p , purchase_order po , users u where p.id = o.product_id and o.user_id = u.id and po.order_id = o.order_id
+        select o.id , o.order_id , p.name , p.price, o.quantity , u.email , o.date   from orders o , products p  , users u where p.id = o.product_id and o.user_id = u.id
     </sql:query>
 
     <c:if test="${sessionScope.isAdminLoggedIn == null}">
