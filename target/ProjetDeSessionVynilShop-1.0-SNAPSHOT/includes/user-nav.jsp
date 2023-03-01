@@ -18,7 +18,7 @@
                 <li class="nav-item"> 
                     <a href="cart.jsp" class="btn btn-success">
                         Panier <span class="badge badge-danger" id="count"></span>
-                        <span class="badge badge-danger" id="sum" style="display: none;"></span>
+                        <span class="badge badge-danger" id="sum"></span>
                     </a>
                 </li>
 
@@ -33,8 +33,8 @@
                         <form action="CustomerController" method="POST">
                             <input class="btn btn-danger" type="submit" value="Logout" name="action" />
                         </form>
-                        </c:when>
-                        <c:when test="${sessionScope.userId == null}">
+                    </c:when>
+                    <c:when test="${sessionScope.userId == null}">
                         <li class="nav-item"><a class="nav-link btn btn-dark text-white" href="customer-login.jsp">Login</a></li>
                         </c:when>
                     </c:choose>

@@ -22,9 +22,6 @@
         <jsp:include page="includes/user-nav.jsp" />
         <div class="container">
 
-
-
-
             <div class="card-title my-3" id="card-header">Tous les Produits</div>
             <div class="row" id="max-wd">
 
@@ -42,7 +39,8 @@
                                 <h6 class="category">${product.artist}</h6>
                                 <div class="mt-3 d-flex justify-content-between">
                                     <button class="btn btn-outline-dark" onclick="addToCart('${product.id}','${product.price}','${product.name}','${product.image}')" >Ajouter</button>
-                                    <a class="btn btn-primary" href="order-now?quantity=1&id=1" id="btn-hover">Acheter</a>
+                                    
+                                    <!--<a class="btn btn-primary" href="order-now?quantity=1&id=1" id="btn-hover">Buy Now</a>-->
                                 </div>
                                 <br>
                                 <a class="btn btn-link" href="product-details.jsp?id=${product.id}">Details</a>
@@ -61,10 +59,6 @@
 
     </div>
 
-
-
-
     <jsp:include page="includes/footer.jsp" />
-    <script src="${pageContext.request.contextPath}/static/js/script.js"></script>
 </body>
 </html>

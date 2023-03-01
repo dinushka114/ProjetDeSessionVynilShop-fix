@@ -2,9 +2,11 @@ com/vynilshop/model/User.class
 com/vynilshop/util/DBConnection.class
 com/vynilshop/util/Constants.class
 com/vynilshop/util/FileLocationContextListener.class
+com/vynilshop/util/FileUtil.class
 com/vynilshop/model/Product.class
 com/vynilshop/controller/NavigationController.class
 com/vynilshop/controller/CustomerController.class
 com/vynilshop/service/CustomerService.class
 com/vynilshop/service/AdminService.class
 com/vynilshop/controller/AdminController.class
+com/vynilshop/model/Order.class

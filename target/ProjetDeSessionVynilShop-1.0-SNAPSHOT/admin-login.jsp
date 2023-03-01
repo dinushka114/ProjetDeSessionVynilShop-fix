@@ -12,7 +12,7 @@
 
         <div class="container">
 
-            <div class="ol-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto mt-2">
+            <div class="ol-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto mt-lg-5">
                 <h1>Admin login</h1>
 
                 <c:if test="${emptyData != null}">

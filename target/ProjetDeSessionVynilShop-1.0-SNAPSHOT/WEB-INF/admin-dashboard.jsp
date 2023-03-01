@@ -4,8 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin.css"/>
+        <jsp:include page="../includes/admin-header.jsp" />
         <title>Admin</title>
 
 
@@ -86,7 +85,7 @@
             </div>
         </div>
 
-        <script src="${pageContext.request.contextPath}/static/js/script.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/admin.js"></script>
     </body>
 
 </html>

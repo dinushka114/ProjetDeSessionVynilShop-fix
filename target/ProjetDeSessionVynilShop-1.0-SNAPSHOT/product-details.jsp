@@ -37,9 +37,9 @@
                                 </div>
                                 <p class="lead">${val.description}</p>
                                 <div class="d-flex">
-                                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                    <button class="btn btn-outline-dark flex-shrink-0" onclick="addToCart('${val.id}','${val.price}','${val.name}','${val.image}')" type="button">
                                         <i class="bi-cart-fill me-1"></i>
-                                        Buy Now
+                                        Add to cart
                                     </button>
                                 </div>
                             </div>

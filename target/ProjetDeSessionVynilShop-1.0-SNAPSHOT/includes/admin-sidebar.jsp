@@ -6,10 +6,15 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 Products
             </a>
-             <a class="nav-link" href="NavigationController?to=adminUsers">
+            <a class="nav-link" href="NavigationController?to=adminUsers">
                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                 Customers
             </a>
+            <a class="nav-link" href="NavigationController?to=adminOrders">
+                <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                All Orders
+            </a>
+   
 
         </div>
     </div>

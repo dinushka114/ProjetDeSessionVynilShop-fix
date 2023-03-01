@@ -33,7 +33,7 @@
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Remove</th>
-                        
+
                     </tr>
                 </thead>
 
@@ -41,23 +41,35 @@
 
                 </tbody>
 
-                
+
 
 
             </table>
-            <h3 id="total_price">Total Price: </h3>
+
+            <c:choose>
+                <c:when test="${sessionScope.userId != null}">
+                    <form action="CustomerController" method="POST" id="buyNowForm">
+                        <input class="btn btn-outline-success" type="submit" value="Buy now" name="action" />
+                    </form>
+                </c:when>
+                <c:when test="${sessionScope.userId == null}">
+                    <form action="CustomerController" method="POST">
+                        <input disabled class="btn btn-outline-success" type="submit" value="Buy now" name="action" />
+                    </form>
+                    <p>You need to <a href="customer-login.jsp">login</a> to the system to buy product</p>
+                </c:when>
+            </c:choose>
+
 
 
         </div>
 
     </div>
 
- <!--<td>\${cartData[item].price} *\${cartData[item].qty}</td>-->
-
     <jsp:include page="includes/footer.jsp" />
-    <script src="${pageContext.request.contextPath}/static/js/script.js"></script>
+
     <script>
-      
+
 
         function showCart() {
             var cart = localStorage.getItem("cart");
@@ -83,13 +95,58 @@
                 `
             }
             document.getElementById('tbody').innerHTML = html;
+            
         }
 
 
-        
+
         window.addEventListener("load", (event) => {
             showCart();
+
         });
+
+
+        $("#buyNowForm").submit(function (e) {
+            e.preventDefault();
+            let ids = "";
+            let qtys = "";
+            const cartData = JSON.parse(localStorage.getItem("cart"));
+            if(cartData===null || Object.keys(cartData).length===0){
+                alert("Your cart is empty!!")
+                return;
+                
+            }
+            
+            for (const key in cartData) {
+                console.log(cartData[key].title);
+                ids+=key+",";
+                qtys+=cartData[key].qty+",";
+            }
+            
+            $.ajax({
+                url: 'CustomerController?action=Buy now',
+                type: 'post',
+                data: {
+                    ids:ids,
+                    qtys:qtys
+                },
+                success: function (data) {
+                    if(data.status==='true'){
+                        localStorage.removeItem("cart");
+                        localStorage.removeItem("count");
+                        localStorage.removeItem("sum");
+                        
+                        alert("Order placed!!You will be redirected to the home page");
+                        
+                        window.location.href="index.jsp";
+                    }else{
+                        alert(data.msg)
+                    }
+                }
+            });
+        })
+
+
 
     </script>
 </body>

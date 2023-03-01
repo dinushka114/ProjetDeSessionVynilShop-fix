@@ -4,11 +4,14 @@
  */
 package com.vynilshop.controller;
 
+import com.vynilshop.model.Order;
 import com.vynilshop.model.User;
 import com.vynilshop.service.CustomerService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.regex.*;
 import javax.servlet.http.HttpSession;
-
-import com.vynilshop.model.Cart;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class CustomerController extends HttpServlet {
 
@@ -36,8 +39,11 @@ public class CustomerController extends HttpServlet {
         session = request.getSession();
 
         boolean result = customerService.loginCustomer(email, password);
+
         if (result == true) {
+            int userId = customerService.getUserIdByEmail(email);
             session.setAttribute("userId", email);
+            session.setAttribute("userIdNo", userId);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
             requestDispatcher.forward(request, response);
         } else {
@@ -101,6 +107,36 @@ public class CustomerController extends HttpServlet {
         response.sendRedirect("index.jsp");
     }
 
+    protected void buyNow(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String[] ids = request.getParameter("ids").split(",");
+        String[] qtys = request.getParameter("qtys").split(",");
+        ArrayList<Order> orders = new ArrayList();
+
+        session = request.getSession();
+        int uid = (int) session.getAttribute("userIdNo");
+        System.out.println();
+
+        for (int i = 0; i < ids.length; i++) {
+            orders.add(new Order(Integer.parseInt(ids[i]), uid, Integer.parseInt(qtys[i])));
+        }
+
+        boolean result = customerService.makeOrder(orders , uid);
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        response.setCharacterEncoding("UTF-8");
+        if (result == true) {
+            String res = String.format("{\"msg\":\"%s\",\"status\":\"%b\"}", "Order placed", true);
+            JSONObject jsonRes = new JSONObject(res);
+            out.print(jsonRes);
+            out.flush();
+        } else {
+            String res = String.format("{\"msg\":\"%s\",\"status\":\"%b\"}", "Something went wrong", false);
+            JSONObject jsonRes = new JSONObject(res);
+            out.print(jsonRes);
+            out.flush();
+        }
+    }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -120,6 +156,8 @@ public class CustomerController extends HttpServlet {
             this.loginCustomer(request, response);
         } else if (action.equals("Logout")) {
             this.logoutCustomer(request, response);
+        } else if (action.equals("Buy now")) {
+            this.buyNow(request, response);
         }
     }
 
