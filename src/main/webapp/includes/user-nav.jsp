@@ -30,9 +30,11 @@
 
                 <c:choose>
                     <c:when test="${sessionScope.userId != null}">
+                        <li class="nav-item"><a class="nav-link" href="NavigationController?to=myOrders">My Orders</a></li>
                         <form action="CustomerController" method="POST">
                             <input class="btn btn-danger" type="submit" value="Logout" name="action" />
                         </form>
+                        
                     </c:when>
                     <c:when test="${sessionScope.userId == null}">
                         <li class="nav-item"><a class="nav-link btn btn-dark text-white" href="customer-login.jsp">Login</a></li>

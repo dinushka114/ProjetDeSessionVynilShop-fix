@@ -18,7 +18,7 @@ import java.util.UUID;
 public class CustomerService {
 
     private static Connection connection;
-    private static PreparedStatement preparedStatement, preparedStatement_temp;
+    private static PreparedStatement preparedStatement;
     private static ResultSet resultSet;
 
     public boolean registerCustomer(User user) {
@@ -158,12 +158,7 @@ public class CustomerService {
                 connection.commit();
             }
 
-            preparedStatement_temp = connection.prepareStatement("INSERT INTO purchase_order (order_id , user_id , status) value(?,?,?)");
-            preparedStatement_temp.setString(1, order_id);
-            preparedStatement_temp.setInt(2, user_id);
-            preparedStatement_temp.setString(3, "pending");
-            preparedStatement_temp.execute();
-            connection.commit();
+  
 
             result = true;
 

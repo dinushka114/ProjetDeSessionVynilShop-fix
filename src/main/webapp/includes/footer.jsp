@@ -26,6 +26,11 @@
         document.getElementById("sum").textContent = sum.toFixed(2);
         localStorage.setItem("count", count);
         localStorage.setItem("sum", sum);
+        
+        if(localStorage.getItem("cart")===null || Object.keys(JSON.parse(localStorage.getItem("cart"))).length===0){
+            localStorage.removeItem("sum");
+            document.getElementById("sum").textContent = 0;
+        }
     }
 
     function addToCart(itemId, itemPrice, itemName, itemImage) {
