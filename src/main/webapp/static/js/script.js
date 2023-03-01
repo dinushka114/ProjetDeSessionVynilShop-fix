@@ -15,6 +15,12 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
+
+
+
+
+
+
 });
 
 
@@ -57,9 +63,10 @@ function addToCart(itemId, itemPrice, itemName, itemImage) {
             title: title,
             price: price,
             image: itemImage,
-            qty: 1
+            qty: 1,
+            id: id
         };
-        cart[id] = cartItem
+        cart[id] = cartItem;
     }
 
     count++;
@@ -69,5 +76,47 @@ function addToCart(itemId, itemPrice, itemName, itemImage) {
 
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCart();
-    alert("Item added to the cart")
+    alert("Item added to the cart");
 }
+
+function removeFromCart(itemId, itemPrice, itemName, itemImage) {
+    let price = Number(itemPrice);
+    let title = itemName;
+    let id = itemId;
+
+    if (id in cart) {
+        cart[id].qty--;
+        if(cart[id].qty===0){
+            delete cart[id];
+        }
+    } else {
+        let cartItem = {
+            title: title,
+            price: price,
+            image: itemImage,
+            qty: 1,
+            id: id
+        };
+        cart[id] = cartItem;
+    }
+
+    count--;
+    sum -= price;
+
+    console.log(cart);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCart();
+    alert("Item removed to the cart");
+}
+
+function remove(id, summ, qty) {
+
+    delete cart[id];   
+    count = count - qty;
+    sum = sum - summ;
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+
+}
+

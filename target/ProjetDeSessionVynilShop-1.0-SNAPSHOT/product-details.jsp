@@ -13,11 +13,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="includes/header.jsp"%>
+     
+        <jsp:include page="includes/header.jsp" />
         <title>Vynil Shop</title>
     </head>
     <body>
-        <%@include file="includes/user-nav.jsp"%>
+
+        <jsp:include page="includes/user-nav.jsp" />
         <div class="container">
 
             <c:forEach var="val" items="${product.rows}">
@@ -35,10 +37,9 @@
                                 </div>
                                 <p class="lead">${val.description}</p>
                                 <div class="d-flex">
-                                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
                                     <button class="btn btn-outline-dark flex-shrink-0" type="button">
                                         <i class="bi-cart-fill me-1"></i>
-                                        Add to cart
+                                        Buy Now
                                     </button>
                                 </div>
                             </div>
@@ -54,6 +55,6 @@
 
 
 
-    <%@include file="includes/footer.jsp"%>
+    <jsp:include page="includes/footer.jsp" />
 </body>
 </html>

@@ -14,11 +14,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="includes/header.jsp"%>
+   
+        <jsp:include page="includes/header.jsp" />
         <title>Vynil Shop</title>
     </head>
     <body>
-        <%@include file="includes/user-nav.jsp"%>
+        <jsp:include page="includes/user-nav.jsp" />
         <div class="container">
 
 
@@ -62,7 +63,8 @@
 
 
 
-    <%@include file="includes/footer.jsp"%>
+
+    <jsp:include page="includes/footer.jsp" />
     <script src="${pageContext.request.contextPath}/static/js/script.js"></script>
 </body>
 </html>

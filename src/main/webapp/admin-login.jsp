@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="includes/header.jsp"%>
+        <jsp:include page="includes/header.jsp" />
         <title>Admin Login</title>
     </head>
     <body>
@@ -56,8 +56,6 @@
 
     </div>
 
-
-
-    <%@include file="includes/footer.jsp"%>
+    <jsp:include page="includes/footer.jsp" />
 </body>
 </html>

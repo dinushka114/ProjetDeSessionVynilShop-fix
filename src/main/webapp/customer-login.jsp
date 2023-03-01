@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="includes/header.jsp"%>
+        <jsp:include page="includes/header.jsp" />
         <title>Customer Login</title>
     </head>
     <body>
-
+        <jsp:include page="includes/user-nav.jsp" />
         <div class="container">
 
             <div class="ol-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto mt-lg-5">
@@ -59,6 +59,6 @@
 
 
 
-    <%@include file="includes/footer.jsp"%>
+    <jsp:include page="includes/footer.jsp" />
 </body>
 </html>

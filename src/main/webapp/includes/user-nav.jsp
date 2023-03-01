@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav id="nav" class="navbar navbar-expand-lg  navbar-light bg-warning">
     <div class="container" id="yellow">
         <a href="index.jsp" id="id-Nav">
@@ -11,18 +12,40 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto" id="nav-items">
+            <ul class="navbar-nav" id="nav-items">
                 <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="cart.jsp">Panier<span class="badge badge-danger" id="count"></span> <span class="badge badge-danger" id="sum"></span> </a></li>
 
-                <li class="nav-item"><a class="nav-link" href="orders.jsp">Commandes</a></li>
-                <li class="nav-item"><a class="nav-link" href="log-out">Logout</a></li>
+                <li class="nav-item"> 
+                    <a href="cart.jsp" class="btn btn-success">
+                        Panier <span class="badge badge-danger" id="count"></span>
+                        <span class="badge badge-danger" id="sum" style="display: none;"></span>
+                    </a>
+                </li>
+
+            </ul>      
+            <ul class="d-flex ms-auto navbar-nav">
+
                 <li class="nav-item"><a class="nav-link" href="log-out">FR</a></li>
                 <li class="nav-item"><a class="nav-link" href="log-out">EN</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
+                <c:choose>
+                    <c:when test="${sessionScope.userId != null}">
+                        <form action="CustomerController" method="POST">
+                            <input class="btn btn-danger" type="submit" value="Logout" name="action" />
+                        </form>
+                        </c:when>
+                        <c:when test="${sessionScope.userId == null}">
+                        <li class="nav-item"><a class="nav-link btn btn-dark text-white" href="customer-login.jsp">Login</a></li>
+                        </c:when>
+                    </c:choose>
+
+
+
 
             </ul>
+
+
+
         </div>
     </div>
 </nav>

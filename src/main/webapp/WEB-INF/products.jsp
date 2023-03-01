@@ -26,11 +26,13 @@
 
     <body class="sb-nav-fixed">
 
-        <%@include file="../includes/admin-nav.jsp"%>
+        
+        <jsp:include page="../includes/admin-nav.jsp" />
 
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <%@include file="../includes/admin-sidebar.jsp"%>
+                
+                <jsp:include page="../includes/admin-sidebar.jsp" />
             </div>
             <div id="layoutSidenav_content">
                 <main>
