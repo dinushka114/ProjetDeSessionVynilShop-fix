@@ -23,6 +23,10 @@
         SELECT count(*) as users_count FROM users;
     </sql:query>
 
+    <sql:query var="orders" dataSource="${myData}">
+        SELECT count(*) as orders_count FROM orders;
+    </sql:query>
+
     <c:if test="${sessionScope.isAdminLoggedIn == null}">
         <c:redirect url="admin-login.jsp" />
     </c:if>
@@ -67,6 +71,23 @@
                                         <div class="card-body">
                                             <h2 class="card-title">
                                                 <c:out value='${empty count.users_count ? "Not Yet" : count.users_count}' />
+                                            </h2>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                            
+                            
+                            <c:forEach var="count" items="${orders.rows}">
+                                <div class='col-sm-4'>
+                                    <div class="card text-dark bg-secondary mb-3 p-0">
+                                        <div class="card-header">
+                                            Total no of orders
+                                        </div>
+                                        <div class="card-body">
+                                            <h2 class="card-title">
+                                                <c:out value='${empty count.orders_count ? "Not Yet" : count.orders_count}' />
                                             </h2>
 
                                         </div>

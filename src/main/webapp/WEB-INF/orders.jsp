@@ -60,7 +60,7 @@
                                     <th>Customer Email</th>
                                     <th>Total Price</th>
                                     <th>Date</th>
-                                    <th>Status</th>
+                      
                                 </tr>
                             </thead>
                             <tbody id="myTable">
@@ -74,7 +74,6 @@
                                         <td><c:out value="${order.email}" /></td>
                                         <td><c:out value="${order.quantity * order.price}" /></td>
                                         <td>${fn:substring(order.date, 0, 10)}</td>
-                                        <td>${order.status}</td>
                                     </tr>
                                 </c:forEach>
 
