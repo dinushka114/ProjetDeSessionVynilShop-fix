@@ -25,8 +25,18 @@
             </ul>      
             <ul class="d-flex ms-auto navbar-nav">
 
-                <li class="nav-item"><a class="nav-link" href="log-out">FR</a></li>
-                <li class="nav-item"><a class="nav-link" href="log-out">EN</a></li>
+                <li class="nav-item">
+                    <form action="LanguageController" method="POST">
+                        <input type="submit" name="action" value="FR" class="btn btn-primary m-1" />
+                    </form>
+                    
+                    
+                </li>
+                <li class="nav-item">
+                    <form action="LanguageController" method="POST">
+                        <input type="submit" name="action" value="EN" class="btn btn-primary m-1" />
+                    </form>
+                </li>
 
                 <c:choose>
                     <c:when test="${sessionScope.userId != null}">

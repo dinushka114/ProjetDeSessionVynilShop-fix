@@ -1,0 +1,213 @@
+/*
+    Document   : detailProduit
+    Created on : 23 dec. 2022, 08 h 34 min 21 s
+    Author     : 
+*/
+
+
+.card-title {
+    max-width: 18rem;
+    white-space: normal;
+}
+
+.card {
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: scale(1.1);
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to right, rgb(253, 38, 15), rgb(255, 193, 7));
+
+}
+.card {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+
+navbar-brand-primary {
+    font-family: 'Lato', sans-serif;
+
+}
+.navbar-brand-primary {
+    font-family: 'Lato', sans-serif;
+    font-size: 40px;
+    font-style: italic;
+    text-decoration: none;
+    color: #116466   ;
+
+}
+#nav {
+    background-color: rgb(2, 1, 62);
+
+}
+
+.logo {
+    width: 170px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+#nav {
+    background-color: rgb(2, 1, 62);
+
+}
+
+#nav a {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+#body {
+    background-color: rgb(2, 1, 62);
+    color: aliceblue;
+}
+
+.card-title,.price,.artist {
+    color: black;
+}
+
+bodyNewAcc{
+    background-color: rgb(2, 1, 62);
+    color: aliceblue;
+}
+
+.table tbody td{
+    vertical-align: middle;
+}
+.btn-incre, .btn-decre{
+    box-shadow: none;
+    font-size: 25px;
+}
+
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo {
+    width: 160px;
+    height: 80px;
+    border-radius: 5px;
+}
+
+.card-title {
+    max-width: 18rem;
+    white-space: normal;
+}
+
+.card {
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.card:hover {
+
+    transform: scale(1.1);
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to right, rgb(253, 38, 15), rgb(255, 193, 7));
+}
+
+
+#nav {
+    background-color: rgb(2, 1, 62);
+}
+
+#nav a {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.navbar-brand-primary {
+    font-size: 40px;
+    text-decoration: none;
+}
+
+.container {
+    background-color: rgb(2, 1, 62);
+
+}
+
+#yellow{
+    background-color: #ffc107;
+}
+#body {
+    background-color: rgb(2, 1, 62);
+    color: aliceblue;
+}
+
+
+ul,
+#card-header {
+    font-family: 'Lato', sans-serif;
+    background-color: rgb(2, 1, 62);
+    color: white;
+    letter-spacing: .0575em;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: .75em;
+    text-align: center;
+    color: rgb(255, 193, 7);
+}
+
+
+#card {
+    background-color: white;
+}
+
+#card-header {
+    margin-bottom: 15px;
+}
+.card-body{
+    color: black;
+}
+#nav-items {
+    font-size: 1.25em;
+    background-color: #ffc107;
+}
+
+#nav-items a {
+    color: rgb(2, 1, 62);
+}
+
+#nav-items a:hover {
+    transition-duration: 500ms;
+    color: white;
+}
+
+#btn-hover:hover {
+    /* background: linear-gradient(to left, #00C853, #B2FF59); */
+    background: linear-gradient(to right, rgb(95, 126, 239), rgb(255, 193, 7));
+    color: black;
+    transition-duration: 500ms;
+}
+
+.table tbody td{
+    vertical-align: middle;
+}
+
+.btn-incre, .btn-decre{
+    box-shadow: none;
+    font-size: 25px;
+}
+
+.large-card{
+    width: 80%;
+    margin: 0 auto;
+}
+
+h2{
+    color : #ffc107;
+}

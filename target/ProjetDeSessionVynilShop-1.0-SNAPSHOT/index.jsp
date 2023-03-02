@@ -2,6 +2,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@ taglib prefix= "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="en_US" scope="session" />
+<fmt:setBundle basename="ApplicationResource" />
 
 <sql:setDataSource var="myData" driver="com.mysql.cj.jdbc.Driver"
                    url="jdbc:mysql://localhost:3306/monshopvynilvault" user="root"
@@ -16,7 +20,7 @@
     <head>
    
         <jsp:include page="includes/header.jsp" />
-        <title>Vynil Shop</title>
+        <title> <fmt:message key="index.title" /> </title>
     </head>
     <body>
         <jsp:include page="includes/user-nav.jsp" />
