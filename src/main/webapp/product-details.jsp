@@ -3,6 +3,11 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
+<%@ taglib prefix= "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${sessionScope.language}" />
+<fmt:setBundle basename="ApplicationResource" />
+
 <sql:setDataSource var="myData" driver="com.mysql.cj.jdbc.Driver"
                    url="jdbc:mysql://localhost:3306/monshopvynilvault" user="root"
                    password="123" />
@@ -39,7 +44,7 @@
                                 <div class="d-flex">
                                     <button class="btn btn-outline-dark flex-shrink-0" onclick="addToCart('${val.id}','${val.price}','${val.name}','${val.image}')" type="button">
                                         <i class="bi-cart-fill me-1"></i>
-                                        Add to cart
+                                        <fmt:message key="detailProduct.add" /> 
                                     </button>
                                 </div>
                             </div>

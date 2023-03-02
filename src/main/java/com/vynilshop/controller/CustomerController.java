@@ -150,6 +150,7 @@ public class CustomerController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
+        System.out.println(action);
         if (action.equals("Register")) {
             this.registerCustomer(request, response);
         } else if (action.equals("Login")) {

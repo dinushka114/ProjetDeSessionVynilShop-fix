@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ taglib prefix= "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<fmt:setLocale value="en_US" scope="session" />
+<fmt:setLocale value="${sessionScope.language}" />
 <fmt:setBundle basename="ApplicationResource" />
 
 <sql:setDataSource var="myData" driver="com.mysql.cj.jdbc.Driver"
@@ -26,7 +26,7 @@
         <jsp:include page="includes/user-nav.jsp" />
         <div class="container">
 
-            <div class="card-title my-3" id="card-header">Tous les Produits</div>
+            <div class="card-title my-3" id="card-header"><fmt:message key="index.allProduct" /> </div>
             <div class="row" id="max-wd">
 
                 <c:forEach var="product" items="${products.rows}">
@@ -42,12 +42,12 @@
                                 <h6 class="price">${product.price}</h6>
                                 <h6 class="category">${product.artist}</h6>
                                 <div class="mt-3 d-flex justify-content-between">
-                                    <button class="btn btn-outline-dark" onclick="addToCart('${product.id}','${product.price}','${product.name}','${product.image}')" >Ajouter</button>
+                                    <button class="btn btn-outline-dark" onclick="addToCart('${product.id}','${product.price}','${product.name}','${product.image}')" ><fmt:message key="detailProduct.add" /></button>
                                     
                                     <!--<a class="btn btn-primary" href="order-now?quantity=1&id=1" id="btn-hover">Buy Now</a>-->
                                 </div>
                                 <br>
-                                <a class="btn btn-link" href="product-details.jsp?id=${product.id}">Details</a>
+                                <a class="btn btn-link" href="product-details.jsp?id=${product.id}"><fmt:message key="detailProduct.product" /></a>
                             </div>
                         </div>
                     </div>
