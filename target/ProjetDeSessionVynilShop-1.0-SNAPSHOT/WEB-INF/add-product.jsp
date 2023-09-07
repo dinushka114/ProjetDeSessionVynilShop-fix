@@ -18,7 +18,7 @@
 
     <sql:setDataSource var="myData" driver="com.mysql.cj.jdbc.Driver"
                        url="jdbc:mysql://localhost:3306/monshopvynilvault?zeroDateTimeBehavior=CONVERT_TO_NULL" user="root"
-                       password="123" />
+                       password="" />
 
 
 
@@ -73,7 +73,7 @@
 
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Image</label>
-                                        <input type="file" class="form-control" id="name" aria-describedby="emailHelp" name="image" >
+                                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="image" value="<c:out value="${val.genre}" />">
                                     </div>
 
                                     <div class="mb-3">
@@ -137,7 +137,8 @@
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Image</label>
-                                    <input type="file" class="form-control" id="name" aria-describedby="emailHelp" name="image" value="<c:out value="${val.image}" />">
+                                    <!--<input type="file" class="form-control" id="name" aria-describedby="emailHelp" name="image" value="<c:out value="${val.image}" />">-->
+                                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="image" value="<c:out value="${val.image}" />">
                                 </div>
 
                                 <div class="mb-3">

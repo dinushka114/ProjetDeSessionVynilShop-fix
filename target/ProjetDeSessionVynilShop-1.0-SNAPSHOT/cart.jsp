@@ -5,7 +5,7 @@
 
 <sql:setDataSource var="myData" driver="com.mysql.cj.jdbc.Driver"
                    url="jdbc:mysql://localhost:3306/monshopvynilvault" user="root"
-                   password="123" />
+                   password="" />
 
 <sql:query var="products" dataSource="${myData}">
     SELECT * FROM products;
@@ -80,12 +80,13 @@
 
 
             for (var item in cartData) {
+                
 
                 html += `
                         <tr>
                         <td>\${item}</td>
                         <td>
-                                <img class='img-fluid' width='150px' src=data:image/jpeg;base64,\${cartData[item].image} />
+                                <img class='img-fluid' width='150px' src=./product-image/\${cartData[item].image} />
                         </td>
                         <td>\${cartData[item].title}</td>
                         <td> <button class="btn btn-outline-primary" onclick="removeFromCart('\${item}','\${cartData[item].price}','\${cartData[item].title}','\${cartData[item].image}');showCart()" >-</button> <span style="padding:5px">\${cartData[item].qty}</span> <button onclick="addToCart('\${item}','\${cartData[item].price}','\${cartData[item].title}','\${cartData[item].image}');showCart()" class="btn btn-outline-primary">+</button> </td>

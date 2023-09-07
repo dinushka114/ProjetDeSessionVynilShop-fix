@@ -12,7 +12,7 @@ public class Product {
     private String name;
     private String artist;
     private Double price;
-    private InputStream image;
+    private String image;
     private String genre;
     private String description;
     private int year;
@@ -20,7 +20,7 @@ public class Product {
     public Product() {
 	}
 
-	public Product(int id, String name, String artist, Double price, InputStream image, String genre, String description, int year) {
+	public Product(int id, String name, String artist, Double price, String image, String genre, String description, int year) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -43,7 +43,7 @@ public class Product {
 		this.year = year;
 	}
        
-         public Product(String name, String artist, Double price,InputStream image ,  String genre, String description, int year) {
+         public Product(String name, String artist, Double price,String image ,  String genre, String description, int year) {
 		super();
 		this.name = name;
 		this.artist = artist;
@@ -97,11 +97,11 @@ public class Product {
 		this.price = price;
 	}
 
-	public InputStream getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(InputStream image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

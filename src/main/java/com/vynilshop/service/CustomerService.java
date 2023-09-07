@@ -158,8 +158,6 @@ public class CustomerService {
                 connection.commit();
             }
 
-  
-
             result = true;
 
         } catch (SQLException | ClassNotFoundException e) {

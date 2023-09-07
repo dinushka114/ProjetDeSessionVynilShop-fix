@@ -6,7 +6,7 @@
 
 <sql:setDataSource var="myData" driver="com.mysql.cj.jdbc.Driver"
                    url="jdbc:mysql://localhost:3306/monshopvynilvault" user="root"
-                   password="123" />
+                   password="" />
 
 <sql:query var="orders" dataSource="${myData}">
     select o.id, o.order_id, p.name , p.image , o.quantity , p.price , o.`date`  from orders o , products p where user_id = ${sessionScope.userIdNo} and  o.product_id = p.id ;

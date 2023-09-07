@@ -64,21 +64,16 @@ public class AdminController extends HttpServlet {
         String description = request.getParameter("description");
         int year = Integer.parseInt(request.getParameter("year"));
 
-        Part image = request.getPart("image");
+        String image = request.getParameter("image");
 
-        InputStream inputStream = null;
 
-        if (image != null) {
-            inputStream = image.getInputStream();
-
-        }
 
         if (name == null || name.isEmpty() || artist == null || artist.isEmpty() || genre == null || genre.isEmpty() || description == null || description.isEmpty()) {
             request.setAttribute("emptyData", "Please fill all the required details");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
             requestDispatcher.forward(request, response);
         } else {
-            Product product = new Product(id, name, artist, price, inputStream, genre, description, year);
+            Product product = new Product(id, name, artist, price, image, genre, description, year);
             boolean result = adminService.updateProduct(product);
             if (result == true) {
                 request.setAttribute("productUpdated", "Product Updated successful");
@@ -100,22 +95,16 @@ public class AdminController extends HttpServlet {
         String genre = request.getParameter("genre");
         String description = request.getParameter("description");
         int year = Integer.parseInt(request.getParameter("year").strip());
-        Part image = request.getPart("image");
+        String image = request.getParameter("image");
 
-        InputStream inputStream = null;
 
-        if (image != null) {
-            System.out.println(image.getName());
-            inputStream = image.getInputStream();
-
-        }
 
         if (name == null || name.isEmpty() || artist == null || artist.isEmpty() || genre == null || genre.isEmpty() || description == null || description.isEmpty()) {
             request.setAttribute("emptyData", "Please fill all the required details");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
             requestDispatcher.forward(request, response);
         } else {
-            Product product = new Product(name, artist, price, inputStream, genre, description, year);
+            Product product = new Product(name, artist, price, image, genre, description, year);
             boolean result = adminService.addProduct(product);
             if (result == true) {
                 request.setAttribute("productAdded", "Product Added successful");

@@ -13,7 +13,7 @@
 
     <sql:setDataSource var="myData" driver="com.mysql.cj.jdbc.Driver"
                        url="jdbc:mysql://localhost:3306/monshopvynilvault" user="root"
-                       password="123" />
+                       password="" />
 
     <sql:query var="orders" dataSource="${myData}">
         select o.id , o.order_id , p.name , p.price, o.quantity , u.email , o.date   from orders o , products p  , users u where p.id = o.product_id and o.user_id = u.id

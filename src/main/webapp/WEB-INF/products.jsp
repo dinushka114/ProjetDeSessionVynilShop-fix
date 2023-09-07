@@ -12,7 +12,7 @@
 
     <sql:setDataSource var="myData" driver="com.mysql.cj.jdbc.Driver"
                        url="jdbc:mysql://localhost:3306/monshopvynilvault" user="root"
-                       password="123" />
+                       password="" />
 
     <sql:query var="products" dataSource="${myData}">
         SELECT * FROM products;
@@ -88,7 +88,7 @@
                                         <td><c:out value="${product.artist}" /></td>
                                         <td><c:out value="${product.price}" /></td>
                                         <td>
-                                            <img class='img-fluid' width='150px' src="data:image/jpeg;base64,${product.image}" alt="alt"/>
+                                            <img class='img-fluid' width='150px' src="./product-image/${product.image}" alt="alt"/>
                                         </td>
                                         <td><c:out value="${product.genre}" /></td>
                                         <td><c:out value="${product.description}" /></td>

@@ -9,7 +9,7 @@
 
 <sql:setDataSource var="myData" driver="com.mysql.cj.jdbc.Driver"
                    url="jdbc:mysql://localhost:3306/monshopvynilvault" user="root"
-                   password="123" />
+                   password="" />
 
 <sql:query var="products" dataSource="${myData}">
     SELECT * FROM products;
@@ -33,7 +33,7 @@
                     <!-- card -->
                     <div class="col-md-3 my-3">
                         <div class="card w-100">
-                            <img class="card-img-top" src="data:image/jpeg;base64,${product.image}"
+                            <img class="card-img-top" src="./product-image/${product.image}"
                                  alt="Card image cap">
                             <div class="card-body">
 

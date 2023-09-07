@@ -67,14 +67,12 @@ public class AdminService {
             connection = DBConnection.getDBConnection();
             connection.setAutoCommit(false);
 
-            byte[] fileContent = FileUtil.getFileContent(product.getImage());
-            String imgData = Base64.getEncoder().encodeToString(fileContent);
 
             preparedStatement = connection.prepareStatement("INSERT INTO products ( name, artist, price, image , genre, description, year ) values(? , ? , ? , ? , ? , ? , ?)");
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getArtist());
             preparedStatement.setDouble(3, product.getPrice());
-            preparedStatement.setString(4, imgData);
+            preparedStatement.setString(4, product.getImage());
             preparedStatement.setString(5, product.getGenre());
             preparedStatement.setString(6, product.getDescription());
             preparedStatement.setInt(7, product.getYear());
@@ -105,13 +103,11 @@ public class AdminService {
         try {
 
             connection = DBConnection.getDBConnection();
-            byte[] fileContent = FileUtil.getFileContent(product.getImage());
-            String imgData = Base64.getEncoder().encodeToString(fileContent);
             preparedStatement = connection.prepareStatement("UPDATE products set name = ? , artist = ? , price = ? , image = ? , genre = ? , description = ? , year = ? where id = ?");
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getArtist());
             preparedStatement.setDouble(3, product.getPrice());
-            preparedStatement.setString(4, imgData);
+            preparedStatement.setString(4, product.getImage());
             preparedStatement.setString(5, product.getGenre());
             preparedStatement.setString(6, product.getDescription());
             preparedStatement.setInt(7, product.getYear());

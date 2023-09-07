@@ -12,7 +12,7 @@
 
     <sql:setDataSource var="myData" driver="com.mysql.cj.jdbc.Driver"
                        url="jdbc:mysql://localhost:3306/monshopvynilvault" user="root"
-                       password="123" />
+                       password="" />
 
 
     <sql:query var="products" dataSource="${myData}">
