@@ -13,7 +13,10 @@
                    password="" />
 
 <sql:query var="product" dataSource="${myData}">
-    SELECT * FROM products where id=${param.id};
+    <![CDATA[
+    SELECT * FROM products WHERE id=?
+    ]]>
+    <sql:param value="${param.id}" />
 </sql:query>
 <!DOCTYPE html>
 <html>
