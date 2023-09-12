@@ -3,6 +3,7 @@ com/vynilshop/util/FileLocationContextListener.class
 com/vynilshop/controller/CustomerController.class
 com/vynilshop/controller/NavigationController.class
 com/vynilshop/model/Product.class
+com/vynilshop/controller/LanguageController.class
 com/vynilshop/controller/AdminController.class
 com/vynilshop/service/AdminService.class
 com/vynilshop/service/CustomerService.class
