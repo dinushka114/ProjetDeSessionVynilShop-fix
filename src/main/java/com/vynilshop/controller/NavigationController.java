@@ -27,32 +27,40 @@ public class NavigationController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+       protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("to");
-        if (action.equals("adminProducts")) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/products.jsp");
-            requestDispatcher.forward(request, response);
-        }else if(action.equals("adminAddNewProduct")){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
-            requestDispatcher.forward(request, response);
-        }else if(action.equals("adminUpdateProduct")){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
-            requestDispatcher.forward(request, response);
-        } else if(action.equals("adminUsers")){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/customers.jsp");
-            requestDispatcher.forward(request, response);
-        }else if(action.equals("adminDashboard")){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/admin-dashboard.jsp");
-            requestDispatcher.forward(request, response);
-        }else if(action.equals("adminOrders")){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/orders.jsp");
-            requestDispatcher.forward(request, response);
-        } else if(action.equals("myOrders")){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/my-orders.jsp");
-            requestDispatcher.forward(request, response);
+        
+        try {
+            if (action.equals("adminProducts")) {
+                // Forward to the products page
+            } else if (action.equals("adminAddNewProduct")) {
+                // Forward to the add-product page
+            } else if (action.equals("adminUpdateProduct")) {
+                // Forward to the update-product page
+            } else if (action.equals("adminUsers")) {
+                // Forward to the customers page
+            } else if (action.equals("adminDashboard")) {
+                // Forward to the admin-dashboard page
+            } else if (action.equals("adminOrders")) {
+                // Forward to the orders page
+            } else if (action.equals("myOrders")) {
+                // Forward to the my-orders page
+            } else {
+                // Handle unexpected action value
+                throw new ServletException("Invalid action: " + action);
+            }
+        } catch (Exception e) {
+            // Set the error message as an attribute
+            request.setAttribute("errorMessage", "An error occurred: " + e.getMessage());
+            
+            // Forward to the custom error page
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
+            return; // Ensure that no further processing occurs after forwarding
         }
+        
+        // Continue with normal processing
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

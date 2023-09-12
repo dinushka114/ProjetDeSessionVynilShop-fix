@@ -94,7 +94,7 @@ public class CustomerController extends HttpServlet {
         Pattern pattern = Pattern.compile(regex);
 
         Matcher matcher = pattern.matcher(email);
-        
+
         if (name == null || name.isEmpty() || email == null || email.isEmpty() || password == null || password.isEmpty() || cpassword == null || cpassword.isEmpty()) {
             request.setAttribute("emptyData", "Please fill all the required details");
             errorCount += 1;
@@ -190,36 +190,35 @@ public class CustomerController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    try {
-        response.setContentType("text/html;charset=UTF-8");
-        String action = request.getParameter("action");
-        System.out.println(action);
-        switch (action) {
-            case "Register":
-                this.registerCustomer(request, response);
-                break;
-            case "Login":
-                this.loginCustomer(request, response);
-                break;
-            case "Logout":
-                this.logoutCustomer(request, response);
-                break;
-            case "Buy now":
-                this.buyNow(request, response);
-                break;
-            default:
-                break;
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+            String action = request.getParameter("action");
+            System.out.println(action);
+            switch (action) {
+                case "Register":
+                    this.registerCustomer(request, response);
+                    break;
+                case "Login":
+                    this.loginCustomer(request, response);
+                    break;
+                case "Logout":
+                    this.logoutCustomer(request, response);
+                    break;
+                case "Buy now":
+                    this.buyNow(request, response);
+                    break;
+                default:
+                    break;
+            }
+        } catch (IOException | ServletException e) {
+            // Handle any exceptions and redirect to the error page
+            request.setAttribute("exception", e);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error.jsp");
+            requestDispatcher.forward(request, response);
         }
-    } catch (IOException | ServletException e) {
-        // Handle any exceptions and redirect to the error page
-        request.setAttribute("exception", e);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error.jsp");
-        requestDispatcher.forward(request, response);
     }
-}
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -233,7 +232,12 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (IOException | ServletException e) {
+            log("An error occurred while processing the GET request.", e); // Log the exception
+            forwardToErrorPage(request, response, "An error occurred while processing the GET request."); // Forward to a custom error page
+        }
     }
 
     /**
@@ -247,7 +251,19 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (IOException | ServletException e) {
+            log("An error occurred while processing the POST request.", e); // Log the exception
+            forwardToErrorPage(request, response, "An error occurred while processing the POST request."); // Forward to a custom error page
+        }
+    }
+
+// Common method for forwarding to the error page
+    private void forwardToErrorPage(HttpServletRequest request, HttpServletResponse response, String errorMessage) throws ServletException, IOException {
+        request.setAttribute("errorMessage", errorMessage); // Pass the error message to the error page
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error.jsp");
+        requestDispatcher.forward(request, response);
     }
 
     /**

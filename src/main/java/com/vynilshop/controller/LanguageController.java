@@ -27,18 +27,27 @@ public class LanguageController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
-        if(action.equals("FR")){
-            session.setAttribute("language", "fr_CA");
-        }else if(action.equals("EN")){
-            session.setAttribute("language", "en_US");
-        }
         
-        response.sendRedirect("index.jsp");
+        try {
+            if (action.equals("FR")) {
+                session.setAttribute("language", "fr_CA");
+            } else if (action.equals("EN")) {
+                session.setAttribute("language", "en_US");
+            }
+            
+            response.sendRedirect("index.jsp");
+        } catch (Exception e) {
+            // Set the error message as an attribute
+            request.setAttribute("errorMessage", "An error occurred: " + e.getMessage());
+            
+            // Forward to the custom error page
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
