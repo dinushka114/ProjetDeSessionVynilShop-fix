@@ -32,6 +32,8 @@ public class NavigationController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("to");
         
+        response.setHeader("Content-Security-Policy", "default-src 'self'");
+        
         try {
             if (action.equals("adminProducts")) {
                 // Forward to the products page

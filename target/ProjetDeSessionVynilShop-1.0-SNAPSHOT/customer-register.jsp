@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
         <jsp:include page="includes/header.jsp" />
         <title>Customer Register</title>
 
@@ -37,14 +39,14 @@
 
                     </div>
                 </c:if>
-                
+
                 <c:if test="${registerDone != null}">
                     <div class="alert alert-success mt-2 alert-dismissible" role="alert">
                         <c:out value='${registerDone}' />
 
                     </div>
                 </c:if>
-                
+
                 <c:if test="${registerFail != null}">
                     <div class="alert alert-danger mt-2 alert-dismissible" role="alert">
                         <c:out value='${registerFail}' />
@@ -84,7 +86,7 @@
                         <input type='submit' class='btn btn-primary w-100 mb-3' name='action'
                                value='Register'>
                         <a href="customer-login.jsp">click here to login</a>
-                       
+
                     </div>
                 </form>
 

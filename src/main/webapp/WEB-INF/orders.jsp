@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>   
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
         <jsp:include page="../includes/admin-header.jsp" />
         <title>Admin</title>
 
@@ -24,9 +25,9 @@
     </c:if>
 
     <body class="sb-nav-fixed">
-        
+
         <jsp:include page="../includes/admin-nav.jsp" />
-        
+
 
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -36,14 +37,14 @@
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Orders</h1>
-                      
-                        
+
+
                         <c:if test="${customerDelete != null}">
                             <div class="alert alert-success mt-2 alert-dismissible" role="alert">
                                 <c:out value='${customerDelete}' />
                             </div>
                         </c:if>
-                        
+
                         <c:if test="${customerDeleteError != null}">
                             <div class="alert alert-danger mt-2 alert-dismissible" role="alert">
                                 <c:out value='${customerDeleteError}' />
@@ -60,7 +61,7 @@
                                     <th>Customer Email</th>
                                     <th>Total Price</th>
                                     <th>Date</th>
-                      
+
                                 </tr>
                             </thead>
                             <tbody id="myTable">
@@ -89,7 +90,7 @@
         </div>
 
         <script src="${pageContext.request.contextPath}/static/js/admin.js"></script>
-      
+
     </body>
 
 </html>

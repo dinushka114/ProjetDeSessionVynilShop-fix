@@ -44,7 +44,8 @@ public class CustomerController extends HttpServlet {
         // Create a SQL query using a prepared statement
         String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
         try (Connection connection = DriverManager.getConnection(Constants.URL, Constants.USERNAME, Constants.PASSWORD); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-
+            response.setHeader("Content-Security-Policy", "default-src 'self'");
+            
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, password);
 
@@ -62,8 +63,7 @@ public class CustomerController extends HttpServlet {
                 }
             }
         } catch (SQLException e) {
-// Handle any SQL exceptions appropriately
-            // You may want to log the exception and display a generic error message to the user
+            //Log the exception and display a generic error message to the user
             request.setAttribute("loginError", "An error occurred during login.");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer-login.jsp");
             requestDispatcher.forward(request, response);
@@ -136,8 +136,7 @@ public class CustomerController extends HttpServlet {
                     requestDispatcher.forward(request, response);
                 }
             } catch (SQLException e) {
-// Handle any SQL exceptions appropriately
-                // You may want to log the exception and display a generic error message to the user
+                // Log the exception and display a generic error message to the user
                 request.setAttribute("registerFail", "An error occurred during registration.");
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer-register.jsp");
                 requestDispatcher.forward(request, response);

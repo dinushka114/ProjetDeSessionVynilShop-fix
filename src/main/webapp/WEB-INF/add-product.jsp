@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
         <jsp:include page="../includes/admin-header.jsp" />
         <title>Admin</title>
 
@@ -109,7 +110,7 @@
                                     <c:out value='${productAddedError}' />
                                 </div>
                             </c:if>
-                            
+
                             <c:if test="${productUpdatedError != null}">
                                 <div class="alert alert-danger mt-2 alert-dismissible" role="alert">
                                     <c:out value='${productUpdatedError}' />

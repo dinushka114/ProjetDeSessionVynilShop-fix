@@ -33,6 +33,8 @@ public class LanguageController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
         
+         response.setHeader("Content-Security-Policy", "default-src 'self'");
+        
         try {
             if (action.equals("FR")) {
                 session.setAttribute("language", "fr_CA");
