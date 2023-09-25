@@ -7,6 +7,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="org.owasp.encoder.Encode" %>
+<%! 
+  // Define a function to sanitize and escape HTML content
+  public String sanitizeAndEscape(String input) {
+      return Encode.forHtml(input);
+  }
+%>
 
 <fmt:setLocale value="${sessionScope.language}" />
 <fmt:setBundle basename="ApplicationResource" />
@@ -34,19 +41,18 @@
 
             if (resultSet.next()) {
                 // Retrieve and display the product details
-                String artist = resultSet.getString("artist");
-                String genre = resultSet.getString("genre");
-                String year = resultSet.getString("year");
-                String name = resultSet.getString("name");
-                String price = resultSet.getString("price");
-                String description = resultSet.getString("description");
-                String image = resultSet.getString("image");
+                String artist = sanitizeAndEscape(resultSet.getString("artist"));
+                String genre = sanitizeAndEscape(resultSet.getString("genre"));
+                String year = sanitizeAndEscape(resultSet.getString("year"));
+                String name = sanitizeAndEscape(resultSet.getString("name"));
+                String price = sanitizeAndEscape(resultSet.getString("price"));
+                String description = sanitizeAndEscape(resultSet.getString("description"));
+                String image = sanitizeAndEscape(resultSet.getString("image"));
 
 %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
         <jsp:include page="includes/header.jsp" />
         <title>Vynil Shop</title>
     </head>
@@ -85,7 +91,7 @@
             }
         } catch (SQLException e) {
             // Handle database error
-            response.sendRedirect("error.jsp?errorMessage=Database error: " + e.getMessage());
+            response.sendRedirect("error.jsp?errorMessage=Database error: " + Encode.forHtml(e.getMessage()));
         } finally {
             // Close database resources
             if (resultSet != null) {
@@ -100,6 +106,6 @@
         }
     } catch (Exception e) {
         // Handle any other unexpected exceptions
-        response.sendRedirect("error.jsp?errorMessage=An error occurred: " + e.getMessage());
+        response.sendRedirect("error.jsp?errorMessage=An error occurred: " + Encode.forHtml(e.getMessage()));
     }
 %>
