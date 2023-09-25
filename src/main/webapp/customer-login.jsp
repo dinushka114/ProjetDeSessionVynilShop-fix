@@ -4,6 +4,11 @@
 
 <%@ taglib prefix= "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<%-- Content Security Policy (CSP) Header --%>
+<%
+    response.setHeader("Content-Security-Policy", "default-src 'self'");
+%>
+
 <fmt:setLocale value="${sessionScope.language}" />
 <fmt:setBundle basename="ApplicationResource" />
 
@@ -11,7 +16,6 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
         <jsp:include page="includes/header.jsp" />
         <title><fmt:message key="login.title" /><</title>
     </head>
