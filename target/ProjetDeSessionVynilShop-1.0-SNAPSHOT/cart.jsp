@@ -15,8 +15,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
         <jsp:include page="includes/header.jsp" />
         <title>Vynil Shop - cart</title>
+
     </head>
     <body>
         <jsp:include page="includes/user-nav.jsp" />
@@ -81,7 +84,7 @@
 
 
             for (var item in cartData) {
-                
+
 
                 html += `
                         <tr>
@@ -97,7 +100,7 @@
                 `
             }
             document.getElementById('tbody').innerHTML = html;
-            
+
         }
 
 
@@ -113,35 +116,35 @@
             let ids = "";
             let qtys = "";
             const cartData = JSON.parse(localStorage.getItem("cart"));
-            if(cartData===null || Object.keys(cartData).length===0){
+            if (cartData === null || Object.keys(cartData).length === 0) {
                 alert("Your cart is empty!!")
                 return;
-                
+
             }
-            
+
             for (const key in cartData) {
                 console.log(cartData[key].title);
-                ids+=key+",";
-                qtys+=cartData[key].qty+",";
+                ids += key + ",";
+                qtys += cartData[key].qty + ",";
             }
-            
+
             $.ajax({
                 url: 'CustomerController?action=Buy now',
                 type: 'post',
                 data: {
-                    ids:ids,
-                    qtys:qtys
+                    ids: ids,
+                    qtys: qtys
                 },
                 success: function (data) {
-                    if(data.status==='true'){
+                    if (data.status === 'true') {
                         localStorage.removeItem("cart");
                         localStorage.removeItem("count");
                         localStorage.removeItem("sum");
-                        
+
                         alert("Order placed!!You will be redirected to the home page");
-                        
-                        window.location.href="index.jsp";
-                    }else{
+
+                        window.location.href = "index.jsp";
+                    } else {
                         alert(data.msg)
                     }
                 }

@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-   
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
         <jsp:include page="includes/header.jsp" />
         <title> <fmt:message key="index.title" /> </title>
     </head>
@@ -43,8 +43,8 @@
                                 <h6 class="price">${product.price}</h6>
                                 <h6 class="category">${product.artist}</h6>
                                 <div class="mt-3 d-flex justify-content-between">
-                                    <button class="btn btn-outline-dark" onclick="addToCart('${product.id}','${product.price}','${product.name}','${product.image}')" ><fmt:message key="detailProduct.add" /></button>
-                                    
+                                    <button class="btn btn-outline-dark" onclick="addToCart('${product.id}', '${product.price}', '${product.name}', '${product.image}')" ><fmt:message key="detailProduct.add" /></button>
+
                                     <!--<a class="btn btn-primary" href="order-now?quantity=1&id=1" id="btn-hover">Buy Now</a>-->
                                 </div>
                                 <br>

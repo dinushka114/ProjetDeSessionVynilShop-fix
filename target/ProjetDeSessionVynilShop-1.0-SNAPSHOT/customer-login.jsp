@@ -5,12 +5,18 @@
 <%@ taglib prefix= "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<%-- Content Security Policy (CSP) Header --%>
+<%
+    response.setHeader("Content-Security-Policy", "default-src 'self'");
+%>
+
 <fmt:setLocale value="${sessionScope.language}" />
 <fmt:setBundle basename="ApplicationResource" />
 
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <jsp:include page="includes/header.jsp" />
         <title><fmt:message key="login.title" /><</title>
     </head>
@@ -50,8 +56,8 @@
                     </div>
 
                     <div class='mb-3'>
-                   
-                        
+
+
                         <button type="submit" name="action" class='btn btn-primary w-100 mb-3' value="Login"><fmt:message key="login.login" /></button>
 
                         <a href="customer-register.jsp">don't have an account?</a>

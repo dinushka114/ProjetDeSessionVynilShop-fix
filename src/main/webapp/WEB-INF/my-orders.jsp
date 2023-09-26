@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
         <jsp:include page="../includes/header.jsp" />
         <title>Vynil Shop</title>
     </head>
@@ -42,8 +42,8 @@
                             <td><c:out value="${order.order_id}" /></td>
                             <td><c:out value="${order.name}" /></td>
                             <td>
-                                            <img class='img-fluid' width='150px' src="data:image/jpeg;base64,${order.image}" alt="alt"/>
-                                        </td>
+                                <img class='img-fluid' width='150px' src="data:image/jpeg;base64,${order.image}" alt="alt"/>
+                            </td>
                             <td><c:out value="${order.quantity}" /></td>
                             <td><c:out value="${order.price}" /></td>
                             <td>${fn:substring(order.date, 0, 10)}</td>
