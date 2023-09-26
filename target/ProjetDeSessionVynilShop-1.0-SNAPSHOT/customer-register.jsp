@@ -2,10 +2,18 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
+<%-- Content Security Policy (CSP) Header --%>
+<%
+    response.setHeader("Content-Security-Policy", "default-src 'self'");
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+
         <jsp:include page="includes/header.jsp" />
+        <meta http-equiv="X-Content-Type-Options" content="nosniff"> <!-- Add this line -->
         <title>Customer Register</title>
 
     </head>
@@ -37,14 +45,14 @@
 
                     </div>
                 </c:if>
-                
+
                 <c:if test="${registerDone != null}">
                     <div class="alert alert-success mt-2 alert-dismissible" role="alert">
                         <c:out value='${registerDone}' />
 
                     </div>
                 </c:if>
-                
+
                 <c:if test="${registerFail != null}">
                     <div class="alert alert-danger mt-2 alert-dismissible" role="alert">
                         <c:out value='${registerFail}' />
@@ -84,7 +92,7 @@
                         <input type='submit' class='btn btn-primary w-100 mb-3' name='action'
                                value='Register'>
                         <a href="customer-login.jsp">click here to login</a>
-                       
+
                     </div>
                 </form>
 

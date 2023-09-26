@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
         <jsp:include page="../includes/admin-header.jsp" />
         <title>Admin</title>
 
@@ -77,8 +78,8 @@
                                     </div>
                                 </div>
                             </c:forEach>
-                            
-                            
+
+
                             <c:forEach var="count" items="${orders.rows}">
                                 <div class='col-sm-4'>
                                     <div class="card text-dark bg-secondary mb-3 p-0">
