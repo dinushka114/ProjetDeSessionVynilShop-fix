@@ -41,4 +41,12 @@
         <param-name>tempfile.dir</param-name>
         <param-value>tmpfiles</param-value>
     </context-param>
+    <filter>
+        <filter-name>CspFilter</filter-name>
+        <filter-class>com.vynilshop.util.CSPFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CspFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>
