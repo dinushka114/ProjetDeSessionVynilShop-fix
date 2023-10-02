@@ -1,6 +1,9 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\Constants.java
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\controller\NavigationController.java
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\DBConnection.java
@@ -14,6 +17,7 @@ D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vyni
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\FileUtil.java
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\controller\CustomerController.java
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\FileLocationContextListener.java
+<<<<<<< Updated upstream
 =======
 /home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/controller/CustomerController.java
 /home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/controller/LanguageController.java
@@ -60,3 +64,5 @@ D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynil
 D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\model\User.java
 D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\service\AdminService.java
 >>>>>>> 692bfe44f1adf4a44e1c1654bb2ae0da77fd67ab
+=======
+>>>>>>> Stashed changes
