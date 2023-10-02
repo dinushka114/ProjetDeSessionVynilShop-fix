@@ -8,5 +8,6 @@ com\vynilshop\service\AdminService.class
 com\vynilshop\util\FileUtil.class
 com\vynilshop\controller\AdminController.class
 com\vynilshop\util\DBConnection.class
+com\vynilshop\controller\LanguageController.class
 com\vynilshop\util\Constants.class
 com\vynilshop\model\User.class
