@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\Constants.java
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\controller\NavigationController.java
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\DBConnection.java
@@ -27,3 +28,19 @@ D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vyni
 /home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/model/Order.java
 /home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/util/DBConnection.java
 >>>>>>> 6d951b0535e3b57a35133a5b2698bf73d896677a
+=======
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/controller/NavigationController.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/controller/LanguageController.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/model/Order.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/controller/AdminController.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/model/Product.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/util/FileUtil.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/service/CustomerService.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/controller/CustomerController.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/model/User.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/util/DBConnection.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/util/CSPFilter.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/util/FileLocationContextListener.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/service/AdminService.java
+/home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/util/Constants.java
+>>>>>>> 7d782bf3af0260c61b68a1e68c2de04868b4af0f

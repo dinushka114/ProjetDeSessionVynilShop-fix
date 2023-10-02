@@ -7,7 +7,7 @@
 <nav id="nav" class="navbar navbar-expand-lg  navbar-light bg-warning">
     <div class="container" id="yellow">
         <a href="index.jsp" id="id-Nav">
-            <img src="${pageContext.request.contextPath}/static/images/logo_vinyle.jpg" class="logo" alt="logo vinyl vault" style=" width: 160px;height: 80px;border-radius: 5px;">
+            <img src="${pageContext.request.contextPath}/static/images/logo_vinyle.jpg" class="logo" alt="logo vinyl vault" style=" width: 100px;height: 80px;border-radius: 5px;">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"

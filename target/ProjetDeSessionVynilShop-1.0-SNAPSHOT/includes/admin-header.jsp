@@ -1,3 +1,3 @@
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery/all.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery/jquery.min.js"></script>
