@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\vynilshop\controller\CustomerController.class
 com\vynilshop\service\CustomerService.class
 com\vynilshop\controller\NavigationController.class
@@ -11,3 +12,18 @@ com\vynilshop\util\DBConnection.class
 com\vynilshop\controller\LanguageController.class
 com\vynilshop\util\Constants.class
 com\vynilshop\model\User.class
+=======
+com/vynilshop/model/User.class
+com/vynilshop/util/FileLocationContextListener.class
+com/vynilshop/controller/CustomerController.class
+com/vynilshop/controller/NavigationController.class
+com/vynilshop/model/Product.class
+com/vynilshop/controller/LanguageController.class
+com/vynilshop/controller/AdminController.class
+com/vynilshop/service/AdminService.class
+com/vynilshop/service/CustomerService.class
+com/vynilshop/model/Order.class
+com/vynilshop/util/DBConnection.class
+com/vynilshop/util/Constants.class
+com/vynilshop/util/FileUtil.class
+>>>>>>> 6d951b0535e3b57a35133a5b2698bf73d896677a

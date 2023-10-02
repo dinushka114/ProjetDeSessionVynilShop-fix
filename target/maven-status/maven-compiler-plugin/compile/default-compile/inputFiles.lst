@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\Constants.java
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\controller\NavigationController.java
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\DBConnection.java
@@ -11,3 +12,18 @@ D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vyni
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\FileUtil.java
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\controller\CustomerController.java
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\FileLocationContextListener.java
+=======
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/controller/CustomerController.java
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/controller/LanguageController.java
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/util/Constants.java
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/service/CustomerService.java
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/model/User.java
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/service/AdminService.java
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/util/FileUtil.java
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/model/Product.java
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/util/FileLocationContextListener.java
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/controller/AdminController.java
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/controller/NavigationController.java
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/model/Order.java
+/home/dinushka/NetBeansProjects/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/util/DBConnection.java
+>>>>>>> 6d951b0535e3b57a35133a5b2698bf73d896677a
