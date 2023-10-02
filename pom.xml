@@ -27,6 +27,7 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+        
         <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -65,12 +66,22 @@
             <artifactId>json</artifactId>
             <version>20210307</version>
         </dependency>
+<<<<<<< HEAD
         
         <dependency>
             <groupId>org.owasp</groupId>
             <artifactId>csrfguard</artifactId>
             <version>4.3.0</version>
         </dependency>
+=======
+
+       <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>6.0.11</version>
+        </dependency>
+        
+>>>>>>> 692bfe44f1adf4a44e1c1654bb2ae0da77fd67ab
 
 
     </dependencies>

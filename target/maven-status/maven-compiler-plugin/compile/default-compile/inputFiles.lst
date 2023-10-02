@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\Constants.java
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\controller\NavigationController.java
 D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\DBConnection.java
@@ -44,3 +45,18 @@ D:\PROJECTS\SSD ASSIGNMENT 1\ProjetDeSessionVynilShop-fix\src\main\java\com\vyni
 /home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/service/AdminService.java
 /home/dinushka/Documents/BSC/SSD/assignment/ProjetDeSessionVynilShop-fix/src/main/java/com/vynilshop/util/Constants.java
 >>>>>>> 7d782bf3af0260c61b68a1e68c2de04868b4af0f
+=======
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\controller\LanguageController.java
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\model\Product.java
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\controller\CustomerController.java
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\DBConnection.java
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\Constants.java
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\service\CustomerService.java
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\FileLocationContextListener.java
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\util\FileUtil.java
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\controller\AdminController.java
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\model\Order.java
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\controller\NavigationController.java
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\model\User.java
+D:\1MY_Y4_S1\SSD\Assignment\ProjetDeSessionVynilShop-fix\src\main\java\com\vynilshop\service\AdminService.java
+>>>>>>> 692bfe44f1adf4a44e1c1654bb2ae0da77fd67ab

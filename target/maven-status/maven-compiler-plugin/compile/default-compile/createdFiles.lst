@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 692bfe44f1adf4a44e1c1654bb2ae0da77fd67ab
 com\vynilshop\controller\CustomerController.class
 com\vynilshop\service\CustomerService.class
 com\vynilshop\controller\NavigationController.class
@@ -12,6 +15,7 @@ com\vynilshop\util\DBConnection.class
 com\vynilshop\controller\LanguageController.class
 com\vynilshop\util\Constants.class
 com\vynilshop\model\User.class
+<<<<<<< HEAD
 =======
 com/vynilshop/model/User.class
 com/vynilshop/util/FileLocationContextListener.class
@@ -28,3 +32,5 @@ com/vynilshop/util/DBConnection.class
 com/vynilshop/util/Constants.class
 com/vynilshop/util/FileUtil.class
 >>>>>>> 6d951b0535e3b57a35133a5b2698bf73d896677a
+=======
+>>>>>>> 692bfe44f1adf4a44e1c1654bb2ae0da77fd67ab
