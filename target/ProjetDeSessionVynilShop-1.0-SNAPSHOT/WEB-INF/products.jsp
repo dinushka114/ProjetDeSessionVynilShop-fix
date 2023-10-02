@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <jsp:include page="../includes/admin-header.jsp" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
+        <jsp:include page="../includes/admin-header.jsp" />
         <title>Admin</title>
 
 
@@ -24,12 +25,12 @@
 
     <body class="sb-nav-fixed">
 
-        
+
         <jsp:include page="../includes/admin-nav.jsp" />
 
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                
+
                 <jsp:include page="../includes/admin-sidebar.jsp" />
             </div>
             <div id="layoutSidenav_content">
@@ -117,7 +118,7 @@
         </div>
 
         <script src="${pageContext.request.contextPath}/static/js/admin.js"></script>
-      
+
     </body>
 
 </html>
