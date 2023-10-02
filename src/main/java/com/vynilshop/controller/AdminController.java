@@ -94,7 +94,7 @@ public class AdminController extends HttpServlet {
         Double price = Double.valueOf(request.getParameter("price"));
         String genre = request.getParameter("genre");
         String description = request.getParameter("description");
-        int year = Integer.parseInt(request.getParameter("year").strip());
+        int year = Integer.parseInt(request.getParameter("year").trim());
         String image = request.getParameter("image");
 
 
@@ -134,8 +134,8 @@ public class AdminController extends HttpServlet {
     protected void adminLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //get request parameters with stripping white spaces
-        String username = request.getParameter("username").strip();
-        String password = request.getParameter("password").strip();
+        String username = request.getParameter("username").trim();
+        String password = request.getParameter("password").trim();
 
         session = request.getSession();
 
