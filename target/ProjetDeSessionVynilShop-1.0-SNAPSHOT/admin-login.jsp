@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self';">
         <jsp:include page="includes/header.jsp" />
         <title>Admin Login</title>
     </head>

@@ -5,7 +5,6 @@
 package com.vynilshop.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,28 +30,43 @@ public class NavigationController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("to");
-        if (action.equals("adminProducts")) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/products.jsp");
-            requestDispatcher.forward(request, response);
-        }else if(action.equals("adminAddNewProduct")){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
-            requestDispatcher.forward(request, response);
-        }else if(action.equals("adminUpdateProduct")){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
-            requestDispatcher.forward(request, response);
-        } else if(action.equals("adminUsers")){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/customers.jsp");
-            requestDispatcher.forward(request, response);
-        }else if(action.equals("adminDashboard")){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/admin-dashboard.jsp");
-            requestDispatcher.forward(request, response);
-        }else if(action.equals("adminOrders")){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/orders.jsp");
-            requestDispatcher.forward(request, response);
-        } else if(action.equals("myOrders")){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/my-orders.jsp");
-            requestDispatcher.forward(request, response);
+
+        try {
+            if (action.equals("adminProducts")) {
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/products.jsp");
+                requestDispatcher.forward(request, response);
+            } else if (action.equals("adminAddNewProduct")) {
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
+                requestDispatcher.forward(request, response);
+            } else if (action.equals("adminUpdateProduct")) {
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add-product.jsp");
+                requestDispatcher.forward(request, response);
+            } else if (action.equals("adminUsers")) {
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/customers.jsp");
+                requestDispatcher.forward(request, response);
+            } else if (action.equals("adminDashboard")) {
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/admin-dashboard.jsp");
+                requestDispatcher.forward(request, response);
+            } else if (action.equals("adminOrders")) {
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/orders.jsp");
+                requestDispatcher.forward(request, response);
+            } else if (action.equals("myOrders")) {
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/my-orders.jsp");
+                requestDispatcher.forward(request, response);
+            } else {
+                // Handle unexpected action value
+                throw new ServletException("Invalid action: " + action);
+            }
+        } catch (IOException | ServletException e) {
+            // Set the error message as an attribute
+            request.setAttribute("errorMessage", "An error occurred: " + e.getMessage());
+
+            // Forward to the custom error page
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
+
         }
+
+        // Continue with normal processing
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
