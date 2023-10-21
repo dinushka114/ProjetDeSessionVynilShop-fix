@@ -50,11 +50,9 @@ public class NavigationController extends HttpServlet {
                         throw new ServletException("Invalid action: " + action);
                 }
             }
-        } catch (Exception e) {
-            // Log the error for debugging purposes
-            e.printStackTrace();
+        } catch (IOException | ServletException e) {
 
-            // Set the error message as an attribute
+           // Set the error message as an attribute
             request.setAttribute("errorMessage", "An error occurred: " + e.getMessage());
 
             // Forward to the custom error page
